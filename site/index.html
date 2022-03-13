@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Cloudinary URL Maker (from alan w. smith)</title>
+    <meta
+      name="description"
+      content="A tool to build Cloudinary image call URLs"
+    />
+
+    <meta
+      property="og:title"
+      content="Cloudinary URL Maker (from alan w. smith)"
+    />
+    <meta
+      property="og:description"
+      content="A tool to build Cloudinary image call URLs"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://cloudinary-url-maker.alanwsmith.com/"
+    />
+    <meta
+      property="og:image"
+      content="https://res.cloudinary.com/awsimages/image/upload/w_1200,h_630/c_fit,co_rgb:80bbc8,l_text:Exo%202_66_bold:static-template.alanwsmith.com,w_1080/fl_layer_apply,g_north_west,x_68,y_68/c_fit,co_rgb:80bbc8,l_text:Exo%202_70_bold:A%20basic%20starter%20template%20for%20making%20sites%20without%20a%20framework,w_1000/fl_layer_apply,g_north_west,x_68,y_190/og-images/blank-v4.png"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@theidofalan" />
+    <meta
+      name="twitter:title"
+      content="Cloudinary URL Maker (from alan w. smith)"
+    />
+    <meta
+      name="twitter:image"
+      content="https://res.cloudinary.com/awsimages/image/upload/w_1200,h_630/c_fit,co_rgb:80bbc8,l_text:Exo%202_66_bold:static-template.alanwsmith.com,w_1080/fl_layer_apply,g_north_west,x_68,y_68/c_fit,co_rgb:80bbc8,l_text:Exo%202_70_bold:A%20basic%20starter%20template%20for%20making%20sites%20without%20a%20framework,w_1000/fl_layer_apply,g_north_west,x_68,y_190/og-images/blank-v4.png"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicons/16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicons/32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/favicons/96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="128x128"
+      href="/favicons/128x128.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="196x196"
+      href="/favicons/196x196.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="228x228"
+      href="/favicons/228x228.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="152x152"
+      href="/favicons/152x152.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="167x167"
+      href="/favicons/167x167.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="180x180"
+      href="/favicons/180x180.png"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+      }
+      header {
+        padding-top: 18px;
+        padding-bottom: 4px;
+        width: 100%;
+        max-width: 72ch;
+        margin: 0 auto;
+        border-bottom: 1px solid #888;
+      }
+      main {
+        width: 100%;
+        max-width: 72ch;
+        margin: 0 auto;
+      }
+      footer {
+        width: 100%;
+        max-width: 72ch;
+        margin: 0 auto;
+        text-align: center;
+        padding-bottom: 12px;
+        font-size: 0.9rem;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .pallet1 {
+        background-color: #6b705c;
+        color: #ffe8d6;
+      }
+      .pallet1 a {
+        color: #b7b7a4;
+      }
+      .pallet1 footer {
+        color: #a5a58d;
+      }
+    </style>
+
+    <script type="text/javascript">
+      function updateUrl(event) {
+        const assembly = []
+        try {
+          const data = JSON.parse(document.getElementById('source_block').value)
+          assembly.push(data.root_url)
+
+          data.sections.forEach((section) => {
+            const parts = []
+            section.forEach((item) => {
+              const item_key = Object.keys(item)
+              console.log(item_key)
+              parts.push(item_key)
+            })
+            assembly.push(parts.join(','))
+          })
+
+          assembly.push(data.base_image)
+
+          const output_url = assembly.join('/')
+          document.getElementById('output_url').value = output_url
+        } catch (error) {
+          document.getElementById('output_url').value = 'Invalid JSON'
+          console.log('Invalid JSON')
+        }
+      }
+      function setupAndGo() {
+        const source_block = document.getElementById('source_block')
+        updateUrl()
+        source_block.addEventListener('input', updateUrl)
+      }
+      document.addEventListener('DOMContentLoaded', setupAndGo)
+    </script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      document.body.className = 'pallet1'
+    </script>
+    <header>
+      <a href="https://www.alanwsmith.com/">alanwsmith.com</a> ~
+      <a href="https://links.alanwsmith.com">links</a> ~
+      <a href="https://podcast.alanwsmith.com/">podcast</a>
+    </header>
+    <main>
+      <h1>Cloudinary URL Maker</h1>
+      <p>
+        Work in Progress: Nothing fancy. Put JSON in the box and you'll get a
+        URL
+      </p>
+      <p>
+        <input type="text" id="output_url" size="70" />
+        <textarea id="source_block" cols="70" rows="12">
+{
+  "root_url": "https://res.cloudinary.com/demo/image/upload",
+  "base_image": "horses.jpg",
+  "sections": [
+    [
+      {"w_1200": []},
+      {"h_630": []}
+    ]
+  ]
+}
+      </textarea
+        >
+      </p>
+
+      <h3>Notes:</h3>
+      <ul>
+        <li>
+          This thing doesn't do everything, but it'll get you pretty far with
+          the basics
+        </li>
+      </ul>
+      <h3>TODO:</h3>
+      <ul>
+        <li>
+          Debounce the input so the invalid json message doesn't show up as soon
+          as you start typing
+        </li>
+        <li>Wire up prettier or another json formatter</li>
+        <li>Add syntax highlighting</li>
+      </ul>
+    </main>
+    <footer>
+      made by <a href="https://twitter.com/TheIdOfAlan">alan w. smith</a>
+      <br />
+      who has a <a href="https://www.alanwsmith.com">website</a> and a
+      <a href="https://podcast.alanwsmith.com/">podcast</a> <br />
+      among other <a href="https://links.alanwsmith.com">things</a>
+    </footer>
+  </body>
+</html>
