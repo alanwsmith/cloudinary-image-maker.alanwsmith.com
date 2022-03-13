@@ -143,13 +143,16 @@
         try {
           const data = JSON.parse(document.getElementById('source_block').value)
           assembly.push(data.root_url)
-
           data.sections.forEach((section) => {
             const parts = []
             section.forEach((item) => {
-              const item_key = Object.keys(item)
-              console.log(item_key)
-              parts.push(item_key)
+              // this is very hacky but it made sense to me
+              // at the time.
+              const item_string = [Object.keys(item)[0]]
+              item[item_string[0]].forEach((sub_string) => {
+                item_string.push(sub_string)
+              })
+              parts.push(item_string.join(':'))
             })
             assembly.push(parts.join(','))
           })
@@ -196,6 +199,9 @@
     [
       {"w_1200": []},
       {"h_630": []}
+    ],
+    [
+      {"e_tint": ["90", "red", "blue", "yellow"] }
     ]
   ]
 }
