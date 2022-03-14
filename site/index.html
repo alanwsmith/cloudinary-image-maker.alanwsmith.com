@@ -159,71 +159,8 @@
     </style>
 
     <script type="text/javascript">
-      function updateUrl() {
-        const assembly = []
-        try {
-          const data = JSON.parse(document.getElementById('source_block').value)
-          assembly.push(data.root_url)
-          data.sections.forEach((section) => {
-            const parts = []
-            section.forEach((item) => {
-              const item_string = [Object.keys(item)[0]]
-              item[item_string[0]].forEach((sub_string) => {
-                item_string.push(encodeURIComponent(sub_string))
-              })
-              parts.push(item_string.join(':'))
-            })
-            assembly.push(parts.join(','))
-          })
-          assembly.push(`${data.base_image}.${data.format}`)
-          const output_url = assembly.join('/')
-          document.getElementById('output_url').value = output_url
-          return output_url
-        } catch (error) {
-          document.getElementById('output_url').value = 'Invalid JSON'
-          console.log('Invalid JSON')
-        }
-      }
-
-      function generate_preview() {
-        const new_url = updateUrl()
-        if (new_url !== undefined) {
-          document.getElementById('image_preview').src = new_url
-        }
-      }
-
-      function setupAndGo() {
-        const source_block = document.getElementById('source_block')
-        source_block.addEventListener('input', updateUrl)
-        const preview_maker = document.getElementById('preview_maker')
-        preview_maker.addEventListener('click', generate_preview)
-        generate_preview()
-      }
-      document.addEventListener('DOMContentLoaded', setupAndGo)
-    </script>
-  </head>
-  <body>
-    <script type="text/javascript">
-      document.body.className = 'pallet2'
-    </script>
-    <header>
-      <a href="https://www.alanwsmith.com/">alanwsmith.com</a> ~
-      <a href="https://links.alanwsmith.com">links</a> ~
-      <a href="https://podcast.alanwsmith.com/">podcast</a>
-    </header>
-    <main>
-      <h1>Cloudinary Image Maker</h1>
-      <p>
-        Nothing fancy. Edit the json and get a cloudinary image call along with
-        a preview.
-      </p>
-      <div id="image_box">
-        <img id="image_preview" />
-      </div>
-      <div>
-        <input type="text" id="output_url" size="70" />
-        <textarea id="source_block" cols="10" rows="12">
-{
+      //////////////////////////////////////////////////////
+      const e1 = `{
   "root_url": "https://res.cloudinary.com/demo/image/upload",
   "base_image": "horses",
   "format": "png",
@@ -268,17 +205,118 @@
       { "y_20": [] }
     ]
   ]
+}`
+
+      const e2 = `{
+  "root_url": "https://res.cloudinary.com/demo/image/upload",
+  "base_image": "horses",
+  "format": "png",
+  "sections": [
+    [
+      {"w_1200": []},
+      {"h_630": []}
+    ],
+    [
+      {"l_text": ["Oswald_80_bold", "Image Maker" ] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_north": [] },
+      { "y_40": [] }
+    ]
+  ]
 }
-      </textarea
-        >
+`
+
+      //////////////////////////////////////////////////////
+      function updateUrl() {
+        const assembly = []
+        try {
+          const data = JSON.parse(document.getElementById('source_block').value)
+          assembly.push(data.root_url)
+          data.sections.forEach((section) => {
+            const parts = []
+            section.forEach((item) => {
+              const item_string = [Object.keys(item)[0]]
+              item[item_string[0]].forEach((sub_string) => {
+                item_string.push(encodeURIComponent(sub_string))
+              })
+              parts.push(item_string.join(':'))
+            })
+            assembly.push(parts.join(','))
+          })
+          assembly.push(`${data.base_image}.${data.format}`)
+          const output_url = assembly.join('/')
+          document.getElementById('output_url').value = output_url
+          return output_url
+        } catch (error) {
+          document.getElementById('output_url').value = 'Invalid JSON'
+          console.log('Invalid JSON')
+        }
+      }
+
+      function generate_preview() {
+        const new_url = updateUrl()
+        if (new_url !== undefined) {
+          document.getElementById('image_preview').src = new_url
+        }
+      }
+
+      function load_example(event) {
+        console.log(event.target.id)
+        document.getElementById('source_block').value = e1
+        generate_preview()
+      }
+
+      function setupAndGo() {
+        const source_block = document.getElementById('source_block')
+        source_block.addEventListener('input', updateUrl)
+        source_block.value = e2
+        const preview_maker = document.getElementById('preview_maker')
+        preview_maker.addEventListener('click', generate_preview)
+        generate_preview()
+
+        const example_buttons = document.querySelectorAll('.example_button')
+        example_buttons.forEach((example_button) => {
+          example_button.addEventListener('click', load_example)
+        })
+      }
+      document.addEventListener('DOMContentLoaded', setupAndGo)
+    </script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      document.body.className = 'pallet2'
+    </script>
+    <header>
+      <a href="https://www.alanwsmith.com/">alanwsmith.com</a> ~
+      <a href="https://links.alanwsmith.com">links</a> ~
+      <a href="https://podcast.alanwsmith.com/">podcast</a>
+    </header>
+    <main>
+      <h1>Cloudinary Image Maker</h1>
+      <p>
+        Nothing fancy. Edit the json and get a cloudinary image call along with
+        a preview.
+      </p>
+      <div id="image_box">
+        <img id="image_preview" />
+      </div>
+      <div>
+        <input type="text" id="output_url" size="70" />
+        <textarea id="source_block" cols="10" rows="12"> </textarea>
         <br />
         <button id="preview_maker">Generate Preview And URL</button>
       </div>
 
+      <h3>Examples</h3>
+      <button id="e1" class="example_button">Initial Example</button>
+      <button id="e2" class="example_button">Example 2</button>
+
       <h3>Notes</h3>
       <ul>
         <li>
-          The Cloudinary reference docs with all the stuff you can do
+          The cloudinary reference docs with all the stuff you can do
           <a href="https://cloudinary.com/documentation/image_transformations"
             >are here</a
           >
@@ -293,8 +331,8 @@
         </li>
         <li>
           Cloudinary's api does a bunch of stuff. I'm sure this doesn't cover
-          everything, but it'll get you pretty far. (Worst case, you can just
-          drop an entire string in with whatever you need for a section.)
+          everything, but it'll get you pretty far. (worst case, you can just
+          drop an entire string in with whatever you need for a section)
         </li>
       </ul>
       <h3>Usage</h3>
@@ -321,7 +359,7 @@
         </li>
         <li>Text is in the parameters is automatically encoded for urls</li>
       </ul>
-      <h3>Ideas and TODOs</h3>
+      <h3>Possible Enhancements</h3>
       <ul>
         <li>
           When clicking the preview (or when auto preview is setup) make the
@@ -335,7 +373,7 @@
           Maybe newlines in strings to make it easier to see longer lines of
           text
         </li>
-        <li>Store JSON history in local storage</li>
+        <li>Store json history in local storage</li>
         <li>
           Setup the ability to post samples and code to twitter for storage,
           reference, and sharing
@@ -367,6 +405,10 @@
           them
         </li>
         <li>Maybe split out the json sections to individual text areas</li>
+        <li>
+          Reverse the process so you can drop in a url that gets parsed out to a
+          json for editing
+        </li>
       </ul>
     </main>
     <footer>
