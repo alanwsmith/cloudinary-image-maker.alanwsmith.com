@@ -150,7 +150,7 @@
               // at the time.
               const item_string = [Object.keys(item)[0]]
               item[item_string[0]].forEach((sub_string) => {
-                item_string.push(sub_string)
+                item_string.push(encodeURIComponent(sub_string))
               })
               parts.push(item_string.join(':'))
             })
@@ -202,6 +202,9 @@
     ],
     [
       {"e_tint": ["90", "red", "blue", "yellow"] }
+    ],
+    [
+      {"l_text": ["Arial_68_bold", "The Quick Brown Fox" ] }
     ]
   ]
 }
@@ -211,6 +214,8 @@
 
       <h3>Notes:</h3>
       <ul>
+        <li>You have to use double quotes</li>
+        <li>Object keys require double quotes as well as the values</li>
         <li>
           This thing doesn't do everything, but it'll get you pretty far with
           the basics
