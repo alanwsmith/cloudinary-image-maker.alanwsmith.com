@@ -155,7 +155,7 @@
             })
             assembly.push(parts.join(','))
           })
-          assembly.push(data.base_image)
+          assembly.push(`${data.base_image}.${data.format}`)
           const output_url = assembly.join('/')
           document.getElementById('output_url').value = output_url
           return output_url
@@ -194,8 +194,8 @@
     <main>
       <h1>Cloudinary Image Maker</h1>
       <p>
-        Nothing fancy. Put some JSON in the box, click the button, and you'll
-        get an image preview along with the corresponding production URL.
+        Nothing fancy. Edit the json and get a cloudinary image call along with
+        a preview.
       </p>
       <img id="preview_image" width="400" />
       <div>
@@ -203,7 +203,8 @@
         <textarea id="source_block" cols="70" rows="12">
 {
   "root_url": "https://res.cloudinary.com/demo/image/upload",
-  "base_image": "horses.png",
+  "base_image": "horses",
+  "format": "png",
   "sections": [
     [
       {"w_1200": []},
