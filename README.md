@@ -1,7 +1,7 @@
-# cloudinary-url-builder.alanwsmith.com
+# cloudinary-image-maker.alanwsmith.com
 
-Source Code For Cloudinary URL Maker
+Source Code For Cloudinary Image Maker
 
-A mini-site for building cloudinary urls out via jsons. 
+A mini-site for building cloudinary urls. 
 
-[cloudinary-url-builder.alanwsmith.com](cloudinary-url-builder.alanwsmith.com)
+[cloudinary-image-maker.alanwsmith.com](cloudinary-image-maker.alanwsmith.com)
