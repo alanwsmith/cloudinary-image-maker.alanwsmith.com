@@ -25,7 +25,7 @@
     />
     <meta
       property="og:image"
-      content="https://res.cloudinary.com/awsimages/image/upload/w_1200,h_630/c_fit,co_rgb:80bbc8,l_text:Exo%202_66_bold:static-template.alanwsmith.com,w_1080/fl_layer_apply,g_north_west,x_68,y_68/c_fit,co_rgb:80bbc8,l_text:Exo%202_70_bold:A%20basic%20starter%20template%20for%20making%20sites%20without%20a%20framework,w_1000/fl_layer_apply,g_north_west,x_68,y_190/og-images/blank-v4.png"
+      content="https://cloudinary-url-maker.alanwsmith.com/og-images/main.png"
     />
 
     <meta name="twitter:card" content="summary_large_image" />
@@ -36,9 +36,8 @@
     />
     <meta
       name="twitter:image"
-      content="https://res.cloudinary.com/awsimages/image/upload/w_1200,h_630/c_fit,co_rgb:80bbc8,l_text:Exo%202_66_bold:static-template.alanwsmith.com,w_1080/fl_layer_apply,g_north_west,x_68,y_68/c_fit,co_rgb:80bbc8,l_text:Exo%202_70_bold:A%20basic%20starter%20template%20for%20making%20sites%20without%20a%20framework,w_1000/fl_layer_apply,g_north_west,x_68,y_190/og-images/blank-v4.png"
+      content="https://cloudinary-url-maker.alanwsmith.com/og-images/main.png"
     />
-
     <link
       rel="icon"
       type="image/png"
@@ -118,6 +117,7 @@
         margin: 0 auto;
         text-align: center;
         padding-bottom: 12px;
+        margin-top: 62px;
         font-size: 0.9rem;
       }
 
@@ -135,45 +135,65 @@
       .pallet1 footer {
         color: #a5a58d;
       }
+      .pallet2 {
+        background-color: #273c2c;
+        color: #ffe8d6;
+      }
+      .pallet2 a {
+        color: #b7b7a4;
+      }
+      .pallet2 footer {
+        color: #a5a58d;
+      }
     </style>
 
     <script type="text/javascript">
-      function updateUrl(event) {
+      function updateUrl() {
         const assembly = []
         try {
           const data = JSON.parse(document.getElementById('source_block').value)
           assembly.push(data.root_url)
-
           data.sections.forEach((section) => {
             const parts = []
             section.forEach((item) => {
-              const item_key = Object.keys(item)
-              console.log(item_key)
-              parts.push(item_key)
+              const item_string = [Object.keys(item)[0]]
+              item[item_string[0]].forEach((sub_string) => {
+                item_string.push(encodeURIComponent(sub_string))
+              })
+              parts.push(item_string.join(':'))
             })
             assembly.push(parts.join(','))
           })
-
           assembly.push(data.base_image)
-
           const output_url = assembly.join('/')
           document.getElementById('output_url').value = output_url
+          return output_url
         } catch (error) {
           document.getElementById('output_url').value = 'Invalid JSON'
           console.log('Invalid JSON')
         }
       }
+
+      function generate_preview() {
+        const new_url = updateUrl()
+        if (new_url !== undefined) {
+          document.getElementById('preview_image').src = new_url
+        }
+      }
+
       function setupAndGo() {
         const source_block = document.getElementById('source_block')
-        updateUrl()
         source_block.addEventListener('input', updateUrl)
+        const preview_maker = document.getElementById('preview_maker')
+        preview_maker.addEventListener('click', generate_preview)
+        generate_preview()
       }
       document.addEventListener('DOMContentLoaded', setupAndGo)
     </script>
   </head>
   <body>
     <script type="text/javascript">
-      document.body.className = 'pallet1'
+      document.body.className = 'pallet2'
     </script>
     <header>
       <a href="https://www.alanwsmith.com/">alanwsmith.com</a> ~
@@ -183,41 +203,160 @@
     <main>
       <h1>Cloudinary URL Maker</h1>
       <p>
-        Work in Progress: Nothing fancy. Put JSON in the box and you'll get a
-        URL
+        Nothing fancy. Put some JSON in the box, click the button, and you'll
+        get an image preview along with the corresponding production URL.
       </p>
-      <p>
+      <img id="preview_image" width="400" />
+      <div>
         <input type="text" id="output_url" size="70" />
         <textarea id="source_block" cols="70" rows="12">
 {
   "root_url": "https://res.cloudinary.com/demo/image/upload",
-  "base_image": "horses.jpg",
+  "base_image": "horses.png",
   "sections": [
     [
       {"w_1200": []},
       {"h_630": []}
+    ],
+    [
+      {"l_text": ["Oswald_80_bold", "Cloudinary URL Maker" ] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_north": [] },
+      { "y_40": [] }
+    ],
+    [
+      {"c_fit": [] },
+      {"co_white": [] },
+      {"w_1200": [] },
+      {"h_50": [] },
+      {"bo_4px_solid_black": [] },
+      {"b_rgb": ["FEB61F55"] },
+      {"l_text": ["Ubuntu_42_bold_stroke_alignmentvalue_center", "Configure text and transformations with JSON" ] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_north": [] },
+      { "y_150": [] }
+    ],
+
+    [
+      {"c_fit": [] },
+      {"w_1200": [] },
+      {"h_50": [] },
+      {"co_rgb": ["ccd1a5"] },
+      {"bo_4px_solid_black": [] },
+      {"l_text": ["Ubuntu_42_bold_stroke_alignmentvalue_center", "cloudinary-url-maker.alanwsmith.com" ] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_south": [] },
+      { "y_20": [] }
     ]
+
   ]
 }
       </textarea
         >
-      </p>
+        <br />
+        <button id="preview_maker">Generate Preview And URL</button>
+      </div>
 
-      <h3>Notes:</h3>
+      <h3>Notes</h3>
       <ul>
         <li>
-          This thing doesn't do everything, but it'll get you pretty far with
-          the basics
+          The Cloudinary reference docs with all the stuff you can do
+          <a href="https://cloudinary.com/documentation/image_transformations"
+            >are here</a
+          >
+        </li>
+        <li>
+          I mainly built this to make it easier to figure out text placement for
+          open graph social images. It's super handy for that
+        </li>
+        <li>
+          The preview image width is hard coded. The generated urls are
+          unaffected by this and will resize to whatever dimensions you spec
+        </li>
+        <li>
+          Cloudinary's api does a bunch of stuff. I'm sure this doesn't cover
+          everything, but it'll get you pretty far. (Worst case, you can just
+          drop an entire string in with whatever you need for a section.)
         </li>
       </ul>
-      <h3>TODO:</h3>
+      <h3>Usage</h3>
+      <ul>
+        <li>Both object keys and values require double quotes</li>
+        <li>
+          Trailing commas don't work (formatters usually spread this across
+          multiple lines, but something like this `['a', 'b', 'c',]` will choke)
+        </li>
+        <li>
+          Each &quot;section&quot; in the &quot;sections&quot; array represents
+          code that will go in between slashes in the final url
+        </li>
+        <li>Each section is itself an array of item objects</li>
+        <li>Each item object has exactly one key and one value</li>
+        <li>The value of the item objects are always arrays of parameters</li>
+        <li>
+          The item object parameters array always exists, but it can be empty
+        </li>
+        <li>In sections, individual items are joined with commas</li>
+        <li>
+          If there are parameters on an item, those are joined to their
+          corresponding key with &quot;:&quot; characters.
+        </li>
+        <li>Text is in the parameters is automatically encoded for urls</li>
+      </ul>
+      <h3>Ideas and TODOs</h3>
       <ul>
         <li>
+          When clicking the preview (or when auto preview is setup) make the
+          image disappear or have some type of overlay) to show that it's being
+          loaded
+        </li>
+        <li>Make a button that adds a new section stub</li>
+        <li>Make a button that adds a new item to the last section</li>
+        <li>Add a button to auto copy the url</li>
+        <li>
+          Allow newlines in strings to make it easier to see longer lines of
+          text
+        </li>
+        <li>Store JSON history in local storage</li>
+        <li>
+          Setup the ability to post samples and code to twitter for storage,
+          reference, and sharing
+        </li>
+        <li>
           Debounce the input so the invalid json message doesn't show up as soon
-          as you start typing
+          as you start typing and the preview image can update automatically.
         </li>
         <li>Wire up prettier or another json formatter</li>
         <li>Add syntax highlighting</li>
+        <li>
+          Add example showing auto line breaks with:
+          <textarea cols="40" rows="11">
+    [ {"c_fit": []},
+      {"l_text": ["Arial_32_bold", "long text here" ] },
+      {"w_600": []}
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_south_west": [] },
+      { "y_40": [] },
+      { "x_20": [] }
+    ]</textarea
+          >
+        </li>
+        <li>Add more examples</li>
+        <li>
+          Run a script to show which Google Fonts are available and how to call
+          them
+        </li>
+        <li>
+          Could split out the JSON to individual text areas for each section
+        </li>
       </ul>
     </main>
     <footer>
