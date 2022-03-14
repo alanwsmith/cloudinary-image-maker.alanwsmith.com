@@ -1,6 +1,7 @@
-# cloudinary-url-maker.alanwsmith.com
+# cloudinary-url-builder.alanwsmith.com
 
 Source Code For Cloudinary URL Maker
 
-Starting out as a simple script. Will look at
-making it a web site at some point. 
+A mini-site for building cloudinary urls out via jsons. 
+
+[cloudinary-url-builder.alanwsmith.com](cloudinary-url-builder.alanwsmith.com)
