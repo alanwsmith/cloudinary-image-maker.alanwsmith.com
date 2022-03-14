@@ -136,10 +136,20 @@
       .pallet1 footer {
         color: #a5a58d;
       }
+      .pallet2 {
+        background-color: #273c2c;
+        color: #ffe8d6;
+      }
+      .pallet2 a {
+        color: #b7b7a4;
+      }
+      .pallet2 footer {
+        color: #a5a58d;
+      }
     </style>
 
     <script type="text/javascript">
-      function updateUrl(event) {
+      function updateUrl() {
         const assembly = []
         try {
           const data = JSON.parse(document.getElementById('source_block').value)
@@ -157,27 +167,37 @@
             })
             assembly.push(parts.join(','))
           })
-
           assembly.push(data.base_image)
           const output_url = assembly.join('/')
           document.getElementById('output_url').value = output_url
-          document.getElementById('preview_image').src = output_url
+          // document.getElementById('preview_image').src = output_url
+          return output_url
         } catch (error) {
           document.getElementById('output_url').value = 'Invalid JSON'
           console.log('Invalid JSON')
         }
       }
+
+      function generate_preview() {
+        const new_url = updateUrl()
+        if (new_url !== undefined) {
+          document.getElementById('preview_image').src = new_url
+        }
+      }
+
       function setupAndGo() {
         const source_block = document.getElementById('source_block')
-        updateUrl()
         source_block.addEventListener('input', updateUrl)
+        const preview_maker = document.getElementById('preview_maker')
+        preview_maker.addEventListener('click', generate_preview)
+        generate_preview()
       }
       document.addEventListener('DOMContentLoaded', setupAndGo)
     </script>
   </head>
   <body>
     <script type="text/javascript">
-      document.body.className = 'pallet1'
+      document.body.className = 'pallet2'
     </script>
     <header>
       <a href="https://www.alanwsmith.com/">alanwsmith.com</a> ~
@@ -187,11 +207,11 @@
     <main>
       <h1>Cloudinary URL Maker</h1>
       <p>
-        Nothing fancy. Put JSON in the box and you'll get an image preview and
-        the correspoding URL.
+        Nothing fancy. Put some JSON in the box, click the button and you'll get
+        an image preview and the correspoding URL for the produciton image.
       </p>
-      <div><img id="preview_image" width="400" /></div>
-      <p>
+      <img id="preview_image" width="400" />
+      <div>
         <input type="text" id="output_url" size="70" />
         <textarea id="source_block" cols="70" rows="12">
 {
@@ -212,16 +232,22 @@
 }
       </textarea
         >
-      </p>
+        <br />
+        <button id="preview_maker">Generate Preview</button>
+      </div>
 
-      <h3>Notes:</h3>
+      <h3>Notes</h3>
       <ul>
         <li>
           I mainly built this to make it easier to figure out text placement for
-          open graph social images. It's super handy for that.
+          open graph social images. It's super handy for that
         </li>
         <li>
-          The Cloudinary api does a bunch of stuff. I'm sure this doesn't cover
+          Width and height parameters work for the generated URL, but the
+          preview image is hard coded to 400 pixels wide
+        </li>
+        <li>
+          Cloudinary's api does a bunch of stuff. I'm sure this doesn't cover
           everything, but it'll get you pretty far
         </li>
       </ul>
@@ -245,14 +271,16 @@
         </li>
         <li>Text is in the parameters is automatically URI encoded</li>
       </ul>
-      <h3>TODO:</h3>
+      <h3>TODO</h3>
       <ul>
+        <li>Add a button to auto copy the URL</li>
         <li>
           Debounce the input so the invalid json message doesn't show up as soon
           as you start typing and the preview image can update automatically.
         </li>
         <li>Wire up prettier or another json formatter</li>
         <li>Add syntax highlighting</li>
+        <li>Add examples</li>
       </ul>
     </main>
     <footer>
