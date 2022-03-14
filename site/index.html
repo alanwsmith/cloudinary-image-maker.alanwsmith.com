@@ -160,8 +160,11 @@
 
     <script type="text/javascript">
       //////////////////////////////////////////////////////
-      const examples = {
-        e1: `{
+      const examples = [
+        {
+          title: 'Initial example',
+          notes: [],
+          code: `{
         "root_url": "https://res.cloudinary.com/demo/image/upload",
         "base_image": "horses",
         "format": "png",
@@ -207,8 +210,12 @@
           ]
         ]
       }`,
+        },
 
-        e2: `{
+        {
+          title: 'Generate a background with a specific color',
+          notes: [],
+          code: `{
   "root_url": "https://res.cloudinary.com/demo/image/upload",
   "base_image": "horses",
   "format": "png",
@@ -221,8 +228,11 @@
     ]
   ]
 }`,
-
-        e3: `{
+        },
+        {
+          title: 'Automatically wrap long lines of text',
+          notes: [],
+          code: `{
   "root_url": "https://res.cloudinary.com/demo/image/upload",
   "base_image": "horses",
   "format": "png",
@@ -248,15 +258,25 @@
     ]
   ]
 }`,
-
-        e4: `{
+        },
+        {
+          title: 'Use a remote image',
+          notes: [
+            `Some urls contain special characters that need to be encoded. This process doesn't try to deal with that.`,
+            `More details are here: https://cloudinary.com/documentation/fetch_remote_images#creating_a_fetch_url_containing_special_characters`,
+          ],
+          code: `{
   "root_url": "https://res.cloudinary.com/demo/image/fetch",
   "base_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg/1920px-Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg",
   "format": "png",
   "sections": [
   ]
 }`,
-        e5: `{
+        },
+        {
+          title: 'Crop in on a face with a circular mask',
+          notes: [],
+          code: `{
   "root_url": "https://res.cloudinary.com/demo/image/fetch",
   "base_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg/1920px-Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg",
   "format": "png",
@@ -275,8 +295,12 @@
     ]
   ]
 }`,
+        },
 
-        e6: `{
+        {
+          title: 'Generate a breakup pattern',
+          notes: [`This gets a breakup pattern started`],
+          code: `{
   "root_url": "https://res.cloudinary.com/demo/image/upload",
   "base_image": "horses",
   "format": "png",
@@ -294,7 +318,59 @@
       ]
   ]
 }`,
-      }
+        },
+
+        {
+          title: 'Watermark an image',
+          notes: [`This gets a breakup pattern started`],
+          code: `{
+  "root_url": "https://res.cloudinary.com/demo/image/upload",
+  "base_image": "horses",
+  "format": "png",
+  "sections": [
+    [
+      { "w_1200": [] },
+      { "h_630": [] }
+    ],
+    [
+      { "l_cloudinary_icon_blue": [] }
+    ],
+    [
+      { "o_50": [] }
+    ],
+    [
+      { "fl_layer_apply": [] }
+    ]
+  ]
+}`,
+        },
+
+        {
+          title: 'Watermark an image in the corner',
+          notes: [`This gets a breakup pattern started`],
+          code: `{
+  "root_url": "https://res.cloudinary.com/demo/image/upload",
+  "base_image": "horses",
+  "format": "png",
+  "sections": [
+    [
+      { "w_1200": [] },
+      { "h_630": [] }
+    ],
+    [
+      { "l_cloudinary_icon_blue": [] }
+    ],
+    [
+      { "w_0.3": [] },
+      { "o_50": [] }
+    ],
+    [
+      { "fl_layer_apply": [] }
+    ]
+  ]
+}`,
+        },
+      ]
 
       //////////////////////////////////////////////////////
       function updateUrl() {
@@ -337,8 +413,9 @@
 
       function load_example(event) {
         console.log(`Loading example: ${event.target.id}`)
+        const split_id = event.target.id.split('_')
         document.getElementById('source_block').value =
-          examples[event.target.id]
+          examples[split_id[1]].code
         generate_preview()
       }
 
@@ -354,11 +431,23 @@
         preview_maker.addEventListener('click', generate_preview)
         generate_preview()
 
+        const example_section = document.getElementById('examples_section')
+        examples.forEach((example, example_index) => {
+          example_button = document.createElement('button')
+          example_button.id = `example_${example_index}`
+          example_button.innerHTML = examples[example_index].title
+          example_button.addEventListener('click', load_example)
+          example_section.appendChild(example_button)
+        })
+
+        /*
         const example_buttons = document.querySelectorAll('.example_button')
         example_buttons.forEach((example_button) => {
           example_button.addEventListener('click', load_example)
         })
+        */
       }
+
       document.addEventListener('DOMContentLoaded', setupAndGo)
     </script>
   </head>
@@ -388,8 +477,9 @@
         <button id="preview_maker">Generate Preview And URL</button>
       </div>
 
-      <h3>Examples</h3>
+      <h3 id="examples_section">Examples</h3>
 
+      <!--
       <button id="e1" class="example_button">Initial Example</button><br />
       <button id="e2" class="example_button">
         Make a solid color background of a specific color
@@ -404,6 +494,7 @@
       </button>
       <br />
       <button id="e6" class="example_button">Breakup pattern</button>
+      -->
 
       <h3>Notes</h3>
       <ul>
