@@ -160,73 +160,74 @@
 
     <script type="text/javascript">
       //////////////////////////////////////////////////////
-      const e1 = `{
-  "root_url": "https://res.cloudinary.com/demo/image/upload",
-  "base_image": "horses",
-  "format": "png",
-  "sections": [
-    [
-      {"w_1200": []},
-      {"h_630": []}
-    ],
-    [
-      {"l_text": ["Oswald_80_bold", "Cloudinary Image Maker" ] }
-    ],
-    [
-      { "fl_layer_apply": [] },
-      { "g_north": [] },
-      { "y_40": [] }
-    ],
-    [
-      {"c_fit": [] },
-      {"co_white": [] },
-      {"w_1200": [] },
-      {"h_50": [] },
-      {"bo_4px_solid_black": [] },
-      {"b_rgb": ["FEB61F55"] },
-      {"l_text": ["Ubuntu_42_bold_stroke_alignmentvalue_center", "Configure text and transformations with JSON" ] }
-    ],
-    [
-      { "fl_layer_apply": [] },
-      { "g_north": [] },
-      { "y_150": [] }
-    ],
-    [
-      {"c_fit": [] },
-      {"w_1200": [] },
-      {"h_50": [] },
-      {"co_rgb": ["ccd1a5"] },
-      {"bo_4px_solid_black": [] },
-      {"l_text": ["Ubuntu_42_bold_stroke_alignmentvalue_center", "cloudinary-image-maker.alanwsmith.com" ] }
-    ],
-    [
-      { "fl_layer_apply": [] },
-      { "g_south": [] },
-      { "y_20": [] }
-    ]
-  ]
-}`
+      const examples = {
+        e1: `{
+        "root_url": "https://res.cloudinary.com/demo/image/upload",
+        "base_image": "horses",
+        "format": "png",
+        "sections": [
+          [
+            {"w_1200": []},
+            {"h_630": []}
+          ],
+          [
+            {"l_text": ["Oswald_80_bold", "Cloudinary Image Maker" ] }
+          ],
+          [
+            { "fl_layer_apply": [] },
+            { "g_north": [] },
+            { "y_40": [] }
+          ],
+          [
+            {"c_fit": [] },
+            {"co_white": [] },
+            {"w_1200": [] },
+            {"h_50": [] },
+            {"bo_4px_solid_black": [] },
+            {"b_rgb": ["FEB61F55"] },
+            {"l_text": ["Ubuntu_42_bold_stroke_alignmentvalue_center", "Configure text and transformations with JSON" ] }
+          ],
+          [
+            { "fl_layer_apply": [] },
+            { "g_north": [] },
+            { "y_150": [] }
+          ],
+          [
+            {"c_fit": [] },
+            {"w_1200": [] },
+            {"h_50": [] },
+            {"co_rgb": ["ccd1a5"] },
+            {"bo_4px_solid_black": [] },
+            {"l_text": ["Ubuntu_42_bold_stroke_alignmentvalue_center", "cloudinary-image-maker.alanwsmith.com" ] }
+          ],
+          [
+            { "fl_layer_apply": [] },
+            { "g_south": [] },
+            { "y_20": [] }
+          ]
+        ]
+      }`,
 
-      const e2 = `{
-  "root_url": "https://res.cloudinary.com/demo/image/upload",
-  "base_image": "horses",
-  "format": "png",
-  "sections": [
-    [
-      {"w_1200": []},
-      {"h_630": []}
-    ],
-    [
-      {"l_text": ["Oswald_80_bold", "Image Maker" ] }
-    ],
-    [
-      { "fl_layer_apply": [] },
-      { "g_north": [] },
-      { "y_40": [] }
-    ]
-  ]
-}
-`
+        e2: `{
+        "root_url": "https://res.cloudinary.com/demo/image/upload",
+        "base_image": "horses",
+        "format": "png",
+        "sections": [
+          [
+            {"w_1200": []},
+            {"h_630": []}
+          ],
+          [
+            {"l_text": ["Oswald_80_bold", "Image Maker" ] }
+          ],
+          [
+            { "fl_layer_apply": [] },
+            { "g_north": [] },
+            { "y_40": [] }
+          ]
+        ]
+      }`,
+      }
 
       //////////////////////////////////////////////////////
       function updateUrl() {
@@ -263,15 +264,16 @@
       }
 
       function load_example(event) {
-        console.log(event.target.id)
-        document.getElementById('source_block').value = e1
+        console.log(`Loading example: ${event.target.id}`)
+        document.getElementById('source_block').value =
+          examples[event.target.id]
         generate_preview()
       }
 
       function setupAndGo() {
         const source_block = document.getElementById('source_block')
         source_block.addEventListener('input', updateUrl)
-        source_block.value = e2
+        source_block.value = examples['e1']
         const preview_maker = document.getElementById('preview_maker')
         preview_maker.addEventListener('click', generate_preview)
         generate_preview()
