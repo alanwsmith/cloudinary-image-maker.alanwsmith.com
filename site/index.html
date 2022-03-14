@@ -209,18 +209,18 @@
       }`,
 
         e2: `{
-        "root_url": "https://res.cloudinary.com/demo/image/upload",
-        "base_image": "horses",
-        "format": "png",
-        "sections": [
-          [
-            {"w_1200": []},
-            {"h_630": []},
-            {"b_rgb": ["9a0000"] },
-            {"o_0": [] }
-          ]
-        ]
-      }`,
+  "root_url": "https://res.cloudinary.com/demo/image/upload",
+  "base_image": "horses",
+  "format": "png",
+  "sections": [
+    [
+      { "w_1200": [] },
+      { "h_630": [] },
+      { "b_rgb": ["9a0000"] },
+      { "o_0": [] }
+    ]
+  ]
+}`,
 
         e3: `{
   "root_url": "https://res.cloudinary.com/demo/image/upload",
@@ -243,7 +243,7 @@
     [
       { "fl_layer_apply": [] },
       { "g_south_east": [] },
-      { "y_80": [] },
+      { "y_30": [] },
       { "x_40": [] }
     ]
   ]
@@ -251,9 +251,47 @@
 
         e4: `{
   "root_url": "https://res.cloudinary.com/demo/image/fetch",
-  "base_image": "https://res.cloudinary.com/demo/image/fetch/https://upload.wikimedia.org/wikipedia/commons/1/13/Benedict_Cumberbatch_2011",
+  "base_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg/1920px-Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg",
   "format": "png",
   "sections": [
+  ]
+}`,
+        e5: `{
+  "root_url": "https://res.cloudinary.com/demo/image/fetch",
+  "base_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg/1920px-Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg",
+  "format": "png",
+  "sections": [
+    [ 
+      { "c_fill": [] },
+      { "g_face": [] },
+      { "h_600": [] },
+      { "w_600": [] }
+    ],
+    [
+      { "r_max": [] }
+    ],
+    [
+      { "f_auto": [] }
+    ]
+  ]
+}`,
+
+        e6: `{
+  "root_url": "https://res.cloudinary.com/demo/image/upload",
+  "base_image": "horses",
+  "format": "png",
+  "sections": [
+    [
+      { "w_1200": [] },
+      { "h_630": [] },
+      { "b_rgb": ["9a2323"] },
+      { "o_0": [] }
+    ],
+    [ { "e_art": ["sizzle"]} ],
+    [ { "e_noise": ["50"]} ],
+    [
+      { "e_ordered_dither": ["17"] }
+      ]
   ]
 }`,
       }
@@ -307,7 +345,7 @@
       function setupAndGo() {
         const source_block = document.getElementById('source_block')
         source_block.addEventListener('input', updateUrl)
-        source_block.value = examples['e1']
+        source_block.value = examples['e6']
         const preview_maker = document.getElementById('preview_maker')
         preview_maker.addEventListener('click', generate_preview)
         generate_preview()
@@ -333,8 +371,9 @@
       <h1>Cloudinary Image Maker</h1>
       <p>
         Nothing fancy. Edit the json and get a cloudinary image call along with
-        a preview. Check out the examples to get started.
+        a preview.
       </p>
+      <p>Check out the examples to get started.</p>
       <div id="image_box">
         <img id="image_preview" />
       </div>
@@ -346,13 +385,21 @@
       </div>
 
       <h3>Examples</h3>
+
       <button id="e1" class="example_button">Initial Example</button><br />
       <button id="e2" class="example_button">
-        Make a solid color background
+        Make a solid color background of a specific color
       </button>
       <br />
       <button id="e3" class="example_button">Auto line-break text</button>
+      <br />
       <button id="e4" class="example_button">Use a remote image</button>
+      <br />
+      <button id="e5" class="example_button">
+        Crop in to a circle on a face
+      </button>
+      <br />
+      <button id="e6" class="example_button">Breakup pattern</button>
 
       <h3>Notes</h3>
       <ul>
@@ -420,8 +467,8 @@
         <li>Make a button that adds a new item to the last section</li>
         <li>Add a button to auto copy the url</li>
         <li>
-          Maybe newlines in strings to make it easier to see longer lines of
-          text
+          Maybe handle newlines in strings to make it easier to see longer lines
+          of text
         </li>
         <li>Store json history in local storage</li>
         <li>
