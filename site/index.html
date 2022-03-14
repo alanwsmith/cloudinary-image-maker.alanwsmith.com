@@ -89,19 +89,11 @@
         display: grid;
         grid-template-rows: auto 1fr auto;
       }
-      header {
-        padding-top: 18px;
-        padding-bottom: 4px;
-        width: 100%;
-        max-width: 72ch;
-        margin: 0 auto;
-        border-bottom: 1px solid #888;
+
+      a {
+        text-decoration: none;
       }
-      main {
-        width: 100%;
-        max-width: 72ch;
-        margin: 0 auto;
-      }
+
       footer {
         width: 100%;
         max-width: 72ch;
@@ -112,20 +104,36 @@
         font-size: 0.9rem;
       }
 
-      a {
-        text-decoration: none;
+      header {
+        padding-top: 18px;
+        padding-bottom: 4px;
+        width: 100%;
+        max-width: 72ch;
+        margin: 0 auto;
+        border-bottom: 1px solid #888;
       }
 
-      .pallet1 {
-        background-color: #6b705c;
-        color: #ffe8d6;
+      input {
+        box-sizing: border-box;
+        width: 100%;
+        margin-bottom: 6px;
       }
-      .pallet1 a {
-        color: #b7b7a4;
+
+      li {
+        padding-bottom: 4px;
       }
-      .pallet1 footer {
-        color: #a5a58d;
+
+      main {
+        width: 100%;
+        max-width: 72ch;
+        margin: 0 auto;
       }
+
+      textarea {
+        box-sizing: border-box;
+        width: 100%;
+      }
+
       .pallet2 {
         background-color: #273c2c;
         color: #ffe8d6;
@@ -135,6 +143,18 @@
       }
       .pallet2 footer {
         color: #a5a58d;
+      }
+
+      #image_box {
+        margin-bottom: 22px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #image_preview {
+        box-sizing: border-box;
+        width: 100%;
       }
     </style>
 
@@ -168,7 +188,7 @@
       function generate_preview() {
         const new_url = updateUrl()
         if (new_url !== undefined) {
-          document.getElementById('preview_image').src = new_url
+          document.getElementById('image_preview').src = new_url
         }
       }
 
@@ -197,10 +217,12 @@
         Nothing fancy. Edit the json and get a cloudinary image call along with
         a preview.
       </p>
-      <img id="preview_image" width="400" />
+      <div id="image_box">
+        <img id="image_preview" />
+      </div>
       <div>
         <input type="text" id="output_url" size="70" />
-        <textarea id="source_block" cols="70" rows="12">
+        <textarea id="source_block" cols="10" rows="12">
 {
   "root_url": "https://res.cloudinary.com/demo/image/upload",
   "base_image": "horses",
@@ -266,8 +288,8 @@
           open graph social images. It's super handy for that
         </li>
         <li>
-          The preview image width is hard coded. The generated urls are
-          unaffected by this and will resize to whatever dimensions you spec
+          The preview image width is constrianted. The generated urls are
+          unaffected by this and will resize to whatever dimensions you spec out
         </li>
         <li>
           Cloudinary's api does a bunch of stuff. I'm sure this doesn't cover
@@ -310,7 +332,7 @@
         <li>Make a button that adds a new item to the last section</li>
         <li>Add a button to auto copy the url</li>
         <li>
-          Allow newlines in strings to make it easier to see longer lines of
+          Maybe newlines in strings to make it easier to see longer lines of
           text
         </li>
         <li>Store JSON history in local storage</li>
@@ -344,9 +366,7 @@
           Run a script to show which Google Fonts are available and how to call
           them
         </li>
-        <li>
-          Could split out the JSON to individual text areas for each section
-        </li>
+        <li>Maybe split out the json sections to individual text areas</li>
       </ul>
     </main>
     <footer>
