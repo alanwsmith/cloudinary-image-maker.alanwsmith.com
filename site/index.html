@@ -118,6 +118,7 @@
         margin: 0 auto;
         text-align: center;
         padding-bottom: 12px;
+        margin-top: 62px;
         font-size: 0.9rem;
       }
 
@@ -158,9 +159,9 @@
           })
 
           assembly.push(data.base_image)
-
           const output_url = assembly.join('/')
           document.getElementById('output_url').value = output_url
+          document.getElementById('preview_image').src = output_url
         } catch (error) {
           document.getElementById('output_url').value = 'Invalid JSON'
           console.log('Invalid JSON')
@@ -186,9 +187,10 @@
     <main>
       <h1>Cloudinary URL Maker</h1>
       <p>
-        Work in Progress: Nothing fancy. Put JSON in the box and you'll get a
-        URL
+        Nothing fancy. Put JSON in the box and you'll get an image preview and
+        the correspoding URL.
       </p>
+      <div><img id="preview_image" width="400" /></div>
       <p>
         <input type="text" id="output_url" size="70" />
         <textarea id="source_block" cols="70" rows="12">
@@ -214,18 +216,40 @@
 
       <h3>Notes:</h3>
       <ul>
-        <li>You have to use double quotes</li>
-        <li>Object keys require double quotes as well as the values</li>
         <li>
-          This thing doesn't do everything, but it'll get you pretty far with
-          the basics
+          I mainly built this to make it easier to figure out text placement for
+          open graph social images. It's super handy for that.
         </li>
+        <li>
+          The Cloudinary api does a bunch of stuff. I'm sure this doesn't cover
+          everything, but it'll get you pretty far
+        </li>
+      </ul>
+      <h3>Usage</h3>
+      <ul>
+        <li>Both object keys and values require double quotes</li>
+        <li>
+          Each &quot;seciton&quot; in the &quot;sections&quot; array represents
+          code that will go in betwee slashes in the final url
+        </li>
+        <li>Each section is itself an array of item objects</li>
+        <li>Each item object has exactly one key and one value</li>
+        <li>The value of the item objects are always arrays of parameters</li>
+        <li>
+          The item object parameters array always exists, but it can be empty
+        </li>
+        <li>In sections, individual items are joined with commas</li>
+        <li>
+          If there are parameters on an item, those are joined to their
+          corresponding key with &quot;:&quot; characters.
+        </li>
+        <li>Text is in the parameters is automatically URI encoded</li>
       </ul>
       <h3>TODO:</h3>
       <ul>
         <li>
           Debounce the input so the invalid json message doesn't show up as soon
-          as you start typing
+          as you start typing and the preview image can update automatically.
         </li>
         <li>Wire up prettier or another json formatter</li>
         <li>Add syntax highlighting</li>
