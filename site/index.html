@@ -207,8 +207,8 @@
     <main>
       <h1>Cloudinary URL Maker</h1>
       <p>
-        Nothing fancy. Put some JSON in the box, click the button and you'll get
-        an image preview and the correspoding URL for the produciton image.
+        Nothing fancy. Put some JSON in the box, click the button, and you'll
+        get an image preview along with the correspoding production URL.
       </p>
       <img id="preview_image" width="400" />
       <div>
@@ -226,7 +226,25 @@
       {"e_tint": ["90", "red", "blue", "yellow"] }
     ],
     [
-      {"l_text": ["Arial_68_bold", "The Quick Brown Fox" ] }
+      {"l_text": ["Arial_68_bold_underline", "The Quick Brown Fox" ] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_north": [] },
+      { "y_20": [] }
+    ],
+    [
+      {"c_fit": []},
+      {"co_white": []},
+      {"bo_10px_solid_black": [] },
+      {"l_text": ["Arial_32_bold_stroke", "These lines break automatically via `c_fit` at the start and `w_600` at the end - The birch canoe slid on the smooth planks. Glue the sheet to the dark blue background. It's easy to tell the depth of a well. These days a chicken leg is a rare dish." ] },
+      {"w_600": []}
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_south_west": [] },
+      { "y_40": [] },
+      { "x_20": [] }
     ]
   ]
 }
@@ -236,6 +254,44 @@
         <button id="preview_maker">Generate Preview</button>
       </div>
 
+      <textarea>
+hoding:
+
+
+{
+  "root_url": "https://res.cloudinary.com/demo/image/upload",
+  "base_image": "horses.jpg",
+  "sections": [
+    [
+      {"w_1200": []},
+      {"h_630": []}
+    ],
+    [
+      {"e_tint": ["90", "red", "blue", "yellow"] }
+    ],
+    [
+      {"l_text": ["Arial_68_bold_underline", "The Quick Brown Fox" ] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_north": [] },
+      { "y_20": [] }
+    ],
+    [
+      {"c_fit": []},
+      {"co_white": []},
+      {"bo_1px_solid_black": []},
+      {"l_text": ["Arial_39_bold_underline", "These lines break automatically via `c_fit` at the start and `w_600` at the end - The birch canoe slid on the smooth planks. Glue the sheet to the dark blue background. It's easy to tell the depth of a well. These days a chicken leg is a rare dish." ] },
+      {"w_600": []}
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_south_west": [] },
+      { "y_40": [] }
+    ]
+  ]
+}
+      </textarea>
       <h3>Notes</h3>
       <ul>
         <li>
@@ -248,12 +304,17 @@
         </li>
         <li>
           Cloudinary's api does a bunch of stuff. I'm sure this doesn't cover
-          everything, but it'll get you pretty far
+          everything, but it'll get you pretty far. (Worst case, you can just
+          drop an entire string in with whatever you need for a section.)
         </li>
       </ul>
       <h3>Usage</h3>
       <ul>
         <li>Both object keys and values require double quotes</li>
+        <li>
+          Trailing commas don't work (e.g. something like this that you usually
+          see on separate lines: `['a', 'b', 'c',]`
+        </li>
         <li>
           Each &quot;seciton&quot; in the &quot;sections&quot; array represents
           code that will go in betwee slashes in the final url
@@ -271,9 +332,25 @@
         </li>
         <li>Text is in the parameters is automatically URI encoded</li>
       </ul>
-      <h3>TODO</h3>
+      <h3>Ideas and TODOs</h3>
       <ul>
+        <li>
+          When clicking the preview (or when auto preview is setup) make the
+          image disappear or have some type of overlay) to show that it's being
+          loaded
+        </li>
+        <li>Make a button that addes a new section stub</li>
+        <li>Make a button that adds a new item to the last section</li>
         <li>Add a button to auto copy the URL</li>
+        <li>
+          Allow newlines in strings to make it easier to see longer lines of
+          text
+        </li>
+        <li>Store JSON history in local storage</li>
+        <li>
+          Setup the ability to post samples and code to twitter for storage,
+          reference, and sharing
+        </li>
         <li>
           Debounce the input so the invalid json message doesn't show up as soon
           as you start typing and the preview image can update automatically.
