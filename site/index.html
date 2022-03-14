@@ -215,14 +215,47 @@
         "sections": [
           [
             {"w_1200": []},
-            {"h_630": []}
-          ],
-          [
-            {"o_0": [] },
-            {"b_rgb": ["9a0000"] }
+            {"h_630": []},
+            {"b_rgb": ["9a0000"] },
+            {"o_0": [] }
           ]
         ]
       }`,
+
+        e3: `{
+  "root_url": "https://res.cloudinary.com/demo/image/upload",
+  "base_image": "horses",
+  "format": "png",
+  "sections": [
+    [
+      {"w_1200": []},
+      {"h_630": []}
+    ],
+    [
+      {"o_0": [] },
+      {"b_rgb": ["afe3c0"] }
+    ],
+    [ 
+      {"c_fit": []},
+      {"l_text": ["Arial_32_bold", "This example uses \\"c_fit\\" to automatically wrap text to the next line when it hits the edge of the bounding box defined by \\"w_600\\".\\n\\nThe placement is controlled by the, \\"g_south_east\\",  \\"y_200\\", \\"x_30\\" parameters and the call to \\"fl_layer_apply\\".\\n\\nNew lines are done with \`\\\\n\\\\n\` and double quotes are done with \`\\\\\\"\`" ] },
+      {"w_600": []}
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_south_east": [] },
+      { "y_80": [] },
+      { "x_40": [] }
+    ]
+  ]
+}`,
+
+        e4: `{
+  "root_url": "https://res.cloudinary.com/demo/image/fetch",
+  "base_image": "https://res.cloudinary.com/demo/image/fetch/https://upload.wikimedia.org/wikipedia/commons/1/13/Benedict_Cumberbatch_2011",
+  "format": "png",
+  "sections": [
+  ]
+}`,
       }
 
       //////////////////////////////////////////////////////
@@ -236,7 +269,12 @@
             section.forEach((item) => {
               const item_string = [Object.keys(item)[0]]
               item[item_string[0]].forEach((sub_string) => {
-                item_string.push(encodeURIComponent(sub_string))
+                const encoded_string = encodeURIComponent(sub_string)
+                const comma_fixed_string = encoded_string.replace(
+                  /%2C/g,
+                  '%252C'
+                )
+                item_string.push(comma_fixed_string)
               })
               parts.push(item_string.join(':'))
             })
@@ -312,6 +350,9 @@
       <button id="e2" class="example_button">
         Make a solid color background
       </button>
+      <br />
+      <button id="e3" class="example_button">Auto line-break text</button>
+      <button id="e4" class="example_button">Use a remote image</button>
 
       <h3>Notes</h3>
       <ul>
@@ -330,9 +371,9 @@
           unaffected by this and will resize to whatever dimensions you spec out
         </li>
         <li>
-          Cloudinary's api does a bunch of stuff. I'm sure this doesn't cover
-          everything, but it'll get you pretty far. (worst case, you can just
-          drop an entire string in with whatever you need for a section)
+          Cloudinary's api does a bunch of stuff. This doesn't cover everything,
+          but it'll get you pretty far. (and you can always just drop an entire
+          string with whatever you want into a section to trigger it)
         </li>
       </ul>
       <h3>Usage</h3>
@@ -358,6 +399,15 @@
           corresponding key with &quot;:&quot; characters.
         </li>
         <li>Text is in the parameters is automatically encoded for urls</li>
+        <li>
+          Add an slash to escapse quotes to use them in text (i.e. `\&quot;`)
+        </li>
+        <li>Text must all be on one line in the json</li>
+        <li>Paragraphs can be created by adding two newlines (i.e. `\n\n`)</li>
+        <li>
+          Commas in text are replaced with a double escape sequence to prevent
+          them from conflicting with cloudinary's functionality
+        </li>
       </ul>
       <h3>Possible Enhancements</h3>
       <ul>
@@ -384,21 +434,6 @@
         </li>
         <li>Wire up prettier or another json formatter</li>
         <li>Add syntax highlighting</li>
-        <li>
-          Add example showing auto line breaks with:
-          <textarea cols="40" rows="11">
-    [ {"c_fit": []},
-      {"l_text": ["Arial_32_bold", "long text here" ] },
-      {"w_600": []}
-    ],
-    [
-      { "fl_layer_apply": [] },
-      { "g_south_west": [] },
-      { "y_40": [] },
-      { "x_20": [] }
-    ]</textarea
-          >
-        </li>
         <li>Add more examples</li>
         <li>
           Run a script to show which Google Fonts are available and how to call
