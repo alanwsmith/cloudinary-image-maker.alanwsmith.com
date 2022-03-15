@@ -411,22 +411,32 @@
       }
 
       let debounce_count = 0
+      let update_immediately = false
 
       function generate_preview() {
         console.log('Got request to generate preview')
-        console.log('Incrementing debouce count')
-        debounce_count += 1
-        var timeoutId = setTimeout(() => {
-          console.log(`Finished debouce wait. Checking if it's safe`)
-          debounce_count -= 1
-          if (debounce_count > 0) {
-            console.log(`Not yet ready: ${debounce_count} left to go`)
-          } else {
-            console.log(`It's ready. do the thing`)
-            document.getElementById('image_preview').src =
-              document.getElementById('output_url').value
-          }
-        }, 1000)
+
+        if (update_immediately === true) {
+          console.log('Updating immediately')
+          update_immediately = false
+          document.getElementById('image_preview').src =
+            document.getElementById('output_url').value
+        } else {
+          console.log(`Updating via debounce`)
+          console.log('Incrementing debouce count')
+          debounce_count += 1
+          var timeoutId = setTimeout(() => {
+            console.log(`Finished debouce wait. Checking if it's safe`)
+            debounce_count -= 1
+            if (debounce_count > 0) {
+              console.log(`Not yet ready: ${debounce_count} left to go`)
+            } else {
+              console.log(`It's ready. do the thing`)
+              document.getElementById('image_preview').src =
+                document.getElementById('output_url').value
+            }
+          }, 640)
+        }
       }
 
       function load_example(event) {
@@ -434,6 +444,7 @@
         const split_id = event.target.id.split('_')
         document.getElementById('source_block').value =
           examples[split_id[1]].code
+        update_immediately = true
         updateUrl()
       }
 
@@ -455,6 +466,7 @@
         // source_block.value = examples[0].code
         source_block.value = examples[examples.length - 1].code
         source_block.addEventListener('input', updateUrl)
+        update_immediately = true
         updateUrl()
       }
       document.addEventListener('DOMContentLoaded', setupAndGo)
