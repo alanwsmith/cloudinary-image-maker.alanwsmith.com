@@ -82,6 +82,10 @@
     />
 
     <style>
+      /**********************\
+      | Body
+      \**********************/
+
       body {
         margin: 0;
         padding: 0;
@@ -90,9 +94,9 @@
         grid-template-rows: auto 1fr auto;
       }
 
-      a {
-        text-decoration: none;
-      }
+      /**********************\
+      | Sections 
+      \**********************/
 
       footer {
         width: 100%;
@@ -105,12 +109,26 @@
       }
 
       header {
+        width: 100%;
+        max-width: 72ch;
         padding-top: 18px;
         padding-bottom: 4px;
+        margin: 0 auto;
+        border-bottom: 1px solid #888;
+      }
+
+      main {
         width: 100%;
         max-width: 72ch;
         margin: 0 auto;
-        border-bottom: 1px solid #888;
+      }
+
+      /**********************\
+      | Elements 
+      \**********************/
+
+      a {
+        text-decoration: none;
       }
 
       input {
@@ -123,27 +141,14 @@
         padding-bottom: 4px;
       }
 
-      main {
-        width: 100%;
-        max-width: 72ch;
-        margin: 0 auto;
-      }
-
       textarea {
         box-sizing: border-box;
         width: 100%;
       }
 
-      .pallet2 {
-        background-color: #273c2c;
-        color: #ffe8d6;
-      }
-      .pallet2 a {
-        color: #b7b7a4;
-      }
-      .pallet2 footer {
-        color: #a5a58d;
-      }
+      /**********************\
+      | IDs 
+      \**********************/
 
       #image_box {
         margin-bottom: 22px;
@@ -156,6 +161,21 @@
         box-sizing: border-box;
         max-width: 100%;
       }
+
+      /**********************\
+      | Classes 
+      \**********************/
+
+      .pallet2 {
+        background-color: #273c2c;
+        color: #ffe8d6;
+      }
+      .pallet2 a {
+        color: #b7b7a4;
+      }
+      .pallet2 footer {
+        color: #a5a58d;
+      }
     </style>
 
     <script type="text/javascript">
@@ -165,74 +185,65 @@
           title: 'Initial example',
           notes: [],
           code: `{
-              "root_url": "https://res.cloudinary.com/demo/image/upload",
-              "base_image": "horses",
-              "format": "png",
-              "sections": [
-                [
-                  { "w_525": [] },
-                  { "h_350": [] }
-                ],
-                [
-                  {"l_text": ["Oswald_38_bold", "Cloudinary Image Maker" ] }
-                ],
-                [
-                  { "fl_layer_apply": [] },
-                  { "g_north": [] },
-                  { "y_17": [] }
-                ],
-                [
-                  {"c_fit": [] },
-                  {"co_white": [] },
-                  {"w_525": [] },
-                  {"h_20": [] },
-                  {"bo_2px_solid_black": [] },
-                  {"b_rgb": ["FEB61F55"] },
-                  {"l_text": ["Ubuntu_16_bold_stroke_alignmentvalue_center", "Configure text and transformations with JSON" ] }
-                ],
-                [
-                  { "fl_layer_apply": [] },
-                  { "g_north": [] },
-                  { "y_58": [] }
-                ],
-                [
-                  {"c_fit": [] },
-                  {"w_525": [] },
-                  {"h_50": [] },
-                  {"co_rgb": ["ccd1a5"] },
-                  {"bo_2px_solid_black": [] },
-                  {"l_text": ["Ubuntu_18_bold_stroke_alignmentvalue_center", "cloudinary-image-maker.alanwsmith.com" ] }
-                ],
-                [
-                  { "fl_layer_apply": [] },
-                  { "g_south": [] },
-                  { "y_10": [] }
-                ]
-              ]
-            }`,
-        },
+  "_comments": [
+    "///////////////////////////////////////////////////////////////",
+    "Welcome to the Cloudiary Image Maker",
 
-        ///////////////////////////////////////////////////////
+    "Use it to configure a cloudinary image transformation url",
 
-        {
-          title: 'Generate a background with a specific color',
-          notes: [
-            `uses a 1 pixel white source image`,
-            `I haven't seen a way to make a color image like this without a source like the 1 pixel image as a starter`,
-          ],
-          code: `{
-        "root_url": "https://res.cloudinary.com/demo/image/upload",
-        "base_image": "1px-white",
-        "format": "png",
-        "sections": [
-          [
-            { "w_525": [] },
-            { "h_350": [] },
-            { "b_rgb": ["9a0000"] },
-            { "o_0": [] }
-          ]
-        ]
-      }`,
+    "e.g. the image text above was configured through this json",
+
+    "It's a good starting point for Open Graph (OG) social images",
+
+    "More notes on usage are further down the page",
+    "///////////////////////////////////////////////////////////////"
+  ],
+  
+  "root_url": "https://res.cloudinary.com/demo/image/upload",
+  "base_image": "horses",
+  "format": "png",
+  "sections": [
+    [
+      { "w_525": [] },
+      { "h_350": [] }
+    ],
+    [
+      {"l_text": ["Oswald_38_bold", "Cloudinary Image Maker" ] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_north": [] },
+      { "y_17": [] }
+    ],
+    [
+      {"c_fit": [] },
+      {"co_white": [] },
+      {"w_525": [] },
+      {"h_20": [] },
+      {"bo_2px_solid_black": [] },
+      {"b_rgb": ["FEB61F55"] },
+      {"l_text": ["Ubuntu_16_bold_stroke_alignmentvalue_center", "Configure text and transformations with JSON" ] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_north": [] },
+      { "y_58": [] }
+    ],
+    [
+      {"c_fit": [] },
+      {"w_525": [] },
+      {"h_50": [] },
+      {"co_rgb": ["ccd1a5"] },
+      {"bo_2px_solid_black": [] },
+      {"l_text": ["Ubuntu_18_bold_stroke_alignmentvalue_center", "cloudinary-image-maker.alanwsmith.com" ] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_south": [] },
+      { "y_10": [] }
+    ]
+  ]
+}`,
         },
 
         ///////////////////////////////////////////////////////
@@ -315,30 +326,6 @@
           [
             { "f_auto": [] }
           ]
-        ]
-      }`,
-        },
-
-        ///////////////////////////////////////////////////////
-
-        {
-          title: 'Generate a breakup pattern',
-          notes: [`This gets a breakup pattern started`],
-          code: `{
-        "root_url": "https://res.cloudinary.com/demo/image/upload",
-        "base_image": "horses",
-        "format": "png",
-        "sections": [
-          [
-            { "h_350": [] },
-            { "b_rgb": ["9a2323"] },
-            { "o_0": [] }
-          ],
-          [ { "e_art": ["sizzle"]} ],
-          [ { "e_noise": ["50"]} ],
-          [
-            { "e_ordered_dither": ["17"] }
-            ]
         ]
       }`,
         },
@@ -544,9 +531,64 @@
       }`,
         },
 
+
+
         ///////////////////////////////////////////////////////
+
+        {
+          title: 'Generate a background with a specific color',
+          notes: [
+            `uses a 1 pixel white source image`,
+            `I haven't seen a way to make a color image like this without a source like the 1 pixel image as a starter`,
+          ],
+          code: `{
+        "root_url": "https://res.cloudinary.com/demo/image/upload",
+        "base_image": "1px-white",
+        "format": "png",
+        "sections": [
+          [
+            { "w_525": [] },
+            { "h_350": [] },
+            { "b_rgb": ["9a0000"] },
+            { "o_0": [] }
+          ]
+        ]
+      }`,
+        },
+
+        ///////////////////////////////////////////////////////
+
+        {
+          title: 'Generate a breakup pattern',
+          notes: [`This gets a breakup pattern started`],
+          code: `{
+        "root_url": "https://res.cloudinary.com/demo/image/upload",
+        "base_image": "horses",
+        "format": "png",
+        "sections": [
+          [
+            { "h_350": [] },
+            { "b_rgb": ["9a2323"] },
+            { "o_0": [] }
+          ],
+          [ { "e_art": ["sizzle"]} ],
+          [ { "e_noise": ["50"]} ],
+          [
+            { "e_ordered_dither": ["17"] }
+            ]
+        ]
+      }`,
+        },
+
+
+        ///////////////////////////////////////////////////////
+        // Close Example Config
+        ///////////////////////////////////////////////////////
+
       ]
 
+      //////////////////////////////////////////////////////
+      // Start script stuff
       //////////////////////////////////////////////////////
       function updateUrl() {
         console.log('Updating URL')
@@ -687,21 +729,24 @@
     <main>
       <h1>Cloudinary Image Maker</h1>
       <p>
-        Nothing fancy. Edit the json and get a cloudinary image call along with
-        a preview.
+        Configuring cloudinary urls by hand is a pain. So, I made this to make
+        it easier to design open graph (OG) images for the social network cards
+        that show up when you share a link. It's nothing fancy. You edit the
+        json and a preview of the images along with the url.
       </p>
       <p>Check out the examples to get started.</p>
+
+      <h3 id="examples_section">Examples:&nbsp;</h3>
+
       <div id="image_box">
         <img id="image_preview" />
       </div>
       <div>
         <input type="text" id="output_url" size="70" readonly="readonly" />
         <button id="copy_button">Copy URL</button> -
-        <a id="new_tab_url" target="_blank">Open in a new tab</a>
-        <textarea id="source_block" cols="10" rows="12"> </textarea>
+        <a id="new_tab_url" target="_blank"> Or, open the image in a new tab</a>
+        <textarea id="source_block" cols="10" rows="23"> </textarea>
       </div>
-
-      <h3 id="examples_section">Examples</h3>
 
       <h3>Notes</h3>
       <ul>
@@ -737,6 +782,7 @@
           >
         </li>
       </ul>
+
       <h3>Usage</h3>
       <ul>
         <li>Both object keys and values require double quotes</li>
@@ -770,8 +816,17 @@
           them from conflicting with cloudinary's functionality
         </li>
       </ul>
+
       <h3>Possible Enhancements</h3>
       <ul>
+        <li>Made this thing responsive</li>
+        <li>
+          Switch Open in new tab to a button so it matches with the copy button
+        </li>
+        <li>
+          move off of document.execCommand() to the newer navigation api for
+          copying the url to the clipboard
+        </li>
         <li>
           When clicking the preview (or when auto preview is setup) make the
           image disappear or have some type of overlay) to show that it's being
