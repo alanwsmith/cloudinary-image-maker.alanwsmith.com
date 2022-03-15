@@ -449,7 +449,22 @@
         updateUrl()
       }
 
+      // Setup copy button.
+      function copyClipBoard(event) {
+        // code via b1mind :-)
+        let tempInput = document.createElement('textarea')
+        tempInput.value = document.getElementById('output_url').value
+        document.body.appendChild(tempInput)
+        tempInput.select()
+        document.execCommand('copy')
+        document.body.removeChild(tempInput)
+      }
+
       function setupAndGo() {
+        // Add event listener for copy button
+        const copy_button = document.getElementById('copy_button')
+        copy_button.addEventListener('click', copyClipBoard)
+
         // Build example buttons
         const example_section = document.getElementById('examples_section')
         examples.forEach((example, example_index) => {
@@ -464,8 +479,8 @@
         const source_block = document.getElementById('source_block')
         // Use `examples[0].code` for the first example
         // Or, `examples[examples.length - 1].code` for the last
-        // source_block.value = examples[0].code
-        source_block.value = examples[examples.length - 1].code
+        source_block.value = examples[0].code
+        // source_block.value = examples[examples.length - 1].code
         source_block.addEventListener('input', updateUrl)
         update_immediately = true
         updateUrl()
@@ -494,6 +509,7 @@
       </div>
       <div>
         <input type="text" id="output_url" size="70" readonly="readonly" />
+        <button id="copy_button">Copy URL</button>
         <textarea id="source_block" cols="10" rows="12"> </textarea>
       </div>
 
