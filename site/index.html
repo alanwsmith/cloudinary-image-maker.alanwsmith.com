@@ -424,6 +424,7 @@
           title: 'Multiple remote images',
           notes: [
             `multiple remote images need to be base64 encoded which this process handles.`,
+            `the borders in these images are from the source material, not something applied by cloudinary. though, that is possible`,
           ],
           code: `{
         "root_url": "https://res.cloudinary.com/demo/image/upload",
@@ -434,17 +435,109 @@
             { "w_525": [] },
             { "h_350": [] }
           ],
+
           [
-            { "l_fetch": ["https://upload.wikimedia.org/wikipedia/commons/2/21/Mandel_zoom_00_mandelbrot_set.jpg"] }
+            { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24600/3c24690r.jpg"] }
           ],
           [
-            { "fl_layer_apply": [] }
+            { "w_100": [] }
           ],
           [
-            { "l_fetch": ["https://upload.wikimedia.org/wikipedia/en/7/75/Henri_Cartier-Bresson.jpg"] }
+            { "fl_layer_apply": [] },
+            { "g_north_west": [] },
+            { "y_20": [] },
+            { "x_25": [] }
+          ],
+
+          [
+            { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24600/3c24694r.jpg"] }
           ],
           [
-            { "fl_layer_apply": [] }
+            { "w_100": [] }
+          ],
+          [
+            { "fl_layer_apply": [] },
+            { "g_north_west": [] },
+            { "y_20": [] },
+            { "x_150": [] }
+          ],
+
+          [
+            { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24700/3c24714r.jpg"] }
+          ],
+          [
+            { "w_100": [] }
+          ],
+          [
+            { "fl_layer_apply": [] },
+            { "g_north_west": [] },
+            { "y_20": [] },
+            { "x_275": [] }
+          ],
+
+          [
+            { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24700/3c24711r.jpg"] }
+          ],
+          [
+            { "w_100": [] }
+          ],
+          [
+            { "fl_layer_apply": [] },
+            { "g_north_west": [] },
+            { "y_20": [] },
+            { "x_400": [] }
+          ],
+
+          [
+            { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24700/3c24701r.jpg"] }
+          ],
+          [
+            { "w_100": [] }
+          ],
+          [
+            { "fl_layer_apply": [] },
+            { "g_north_west": [] },
+            { "y_180": [] },
+            { "x_25": [] }
+          ],
+
+          [
+            { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24700/3c24705r.jpg"] }
+          ],
+          [
+            { "w_100": [] }
+          ],
+          [
+            { "fl_layer_apply": [] },
+            { "g_north_west": [] },
+            { "y_180": [] },
+            { "x_150": [] }
+          ],
+
+          [
+            { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24700/3c24707r.jpg"] }
+          ],
+          [
+            { "w_100": [] }
+          ],
+          [
+            { "fl_layer_apply": [] },
+            { "g_north_west": [] },
+            { "y_180": [] },
+            { "x_275": [] }
+          ],
+
+          [
+            { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24700/3c24708r.jpg"] }
+          ],
+          [
+            { "w_100": [] }
+          ],
+          [
+            { "fl_layer_apply": [] },
+            { "g_north_west": [] },
+            { "y_180": [] },
+            { "x_400": [] }
           ]
 
         ]
@@ -726,7 +819,7 @@ https://cloudinary.com/documentation/transformation_reference#e_assist_colorblin
 https://cloudinary.com/documentation/transformation_reference#e_blackwhite
 https://cloudinary.com/documentation/transformation_reference#e_blur_faces
 https://cloudinary.com/documentation/transformation_reference#e_blur_region
-play with blur region and the 1 pixel to see about making backgrounds with that automatically (and throw opacity in teh mix - also rounded corners)
+play with blur region and the 1 pixel to see about making backgrounds with that automatically (and throw opacity in teh mix - also rounded corners) - and see if you can use distortion to make triangles
 look at conditionals
 masking layers
 css sprite creation? - https://cloudinary.com/documentation/sprite_generation
