@@ -216,13 +216,17 @@
 
         {
           title: 'Generate a background with a specific color',
-          notes: [],
+          notes: [
+            `uses a 1 pixel white source image`,
+            `I haven't seen a way to make a color image like this without a source like the 1 pixel image as a starter`,
+          ],
           code: `{
   "root_url": "https://res.cloudinary.com/demo/image/upload",
-  "base_image": "horses",
+  "base_image": "1px-white",
   "format": "png",
   "sections": [
     [
+      { "w_525": [] },
       { "h_350": [] },
       { "b_rgb": ["9a0000"] },
       { "o_0": [] }
@@ -397,23 +401,18 @@
         ///////////////////////////////////////////////////////
 
         {
-          title: 'Use a remote image',
+          title: 'Get a Gravatar image',
           notes: [
-            `Some urls contain special characters that need to be encoded. This process doesn't try to deal with that.`,
-            `More details are here: https://cloudinary.com/documentation/fetch_remote_images#creating_a_fetch_url_containing_special_characters`,
+            `Make an md5 hash of the gravatar user's email address and use it for the base_name`,
           ],
           code: `{
-  "root_url": "https://res.cloudinary.com/demo/image/fetch",
-  "base_image": "https://upload.wikimedia.org/wikipedia/en/7/75/Henri_Cartier-Bresson.jpg",
-  "format": "",
+  "root_url": "https://res.cloudinary.com/demo/image/gravatar/",
+  "base_image": "ec8e27851eef45968d23b9be06ba9eb5",
+  "format": "jpg",
   "sections": [
     [
       { "h_350": [] }
-    ],
-    [
-      { "f_auto": [] }
     ]
-
   ]
 }`,
         },
@@ -453,6 +452,7 @@
 
           const output_url = assembly.join('/')
           document.getElementById('output_url').value = output_url
+          document.getElementById('new_tab_url').href = output_url
           generate_preview()
 
           // return output_url
@@ -467,7 +467,6 @@
 
       function generate_preview() {
         console.log('Got request to generate preview')
-
         if (update_immediately === true) {
           console.log('Updating immediately')
           update_immediately = false
@@ -501,9 +500,9 @@
         updateUrl()
       }
 
-      // Setup copy button.
+      // Setup copy button
       function copyClipBoard(event) {
-        // code via b1mind :-)
+        // via b1mind :-)
         let tempInput = document.createElement('textarea')
         tempInput.value = document.getElementById('output_url').value
         document.body.appendChild(tempInput)
@@ -561,7 +560,8 @@
       </div>
       <div>
         <input type="text" id="output_url" size="70" readonly="readonly" />
-        <button id="copy_button">Copy URL</button>
+        <button id="copy_button">Copy URL</button> -
+        <a id="new_tab_url" target="_blank">Open in a new tab</a>
         <textarea id="source_block" cols="10" rows="12"> </textarea>
       </div>
 
