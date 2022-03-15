@@ -159,8 +159,8 @@
     </style>
 
     <script type="text/javascript">
-      //////////////////////////////////////////////////////
       const examples = [
+        ///////////////////////////////////////////////////////
         {
           title: 'Initial example',
           notes: [],
@@ -212,6 +212,8 @@
       }`,
         },
 
+        ///////////////////////////////////////////////////////
+
         {
           title: 'Generate a background with a specific color',
           notes: [],
@@ -228,6 +230,9 @@
   ]
 }`,
         },
+
+        ///////////////////////////////////////////////////////
+
         {
           title: 'Automatically wrap long lines of text',
           notes: [],
@@ -257,24 +262,34 @@
   ]
 }`,
         },
+
+        ///////////////////////////////////////////////////////
+
         {
           title: 'Use a remote image',
           notes: [
             `Some urls contain special characters that need to be encoded. This process doesn't try to deal with that.`,
             `More details are here: https://cloudinary.com/documentation/fetch_remote_images#creating_a_fetch_url_containing_special_characters`,
+            `Note that there's no format here. The 'f_auto' is set to deteremine it`,
+            `If you try to set a format, sometimes it conflicts with the remote URL and breaks the process`,
           ],
           code: `{
   "root_url": "https://res.cloudinary.com/demo/image/fetch",
   "base_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg/1920px-Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg",
-  "format": "png",
+  "format": "",
   "sections": [
     [
       { "h_350": [] }
+    ],
+    [
+      { "f_auto": [] }
     ]
-
   ]
 }`,
         },
+
+        ///////////////////////////////////////////////////////
+
         {
           title: 'Crop in on a face with a circular mask',
           notes: [],
@@ -299,6 +314,8 @@
 }`,
         },
 
+        ///////////////////////////////////////////////////////
+
         {
           title: 'Generate a breakup pattern',
           notes: [`This gets a breakup pattern started`],
@@ -320,6 +337,8 @@
   ]
 }`,
         },
+
+        ///////////////////////////////////////////////////////
 
         {
           title: 'Watermark an image',
@@ -344,6 +363,8 @@
   ]
 }`,
         },
+
+        ///////////////////////////////////////////////////////
 
         {
           title: 'Watermark an image in the corner',
@@ -372,6 +393,32 @@
   ]
 }`,
         },
+
+        ///////////////////////////////////////////////////////
+
+        {
+          title: 'Use a remote image',
+          notes: [
+            `Some urls contain special characters that need to be encoded. This process doesn't try to deal with that.`,
+            `More details are here: https://cloudinary.com/documentation/fetch_remote_images#creating_a_fetch_url_containing_special_characters`,
+          ],
+          code: `{
+  "root_url": "https://res.cloudinary.com/demo/image/fetch",
+  "base_image": "https://upload.wikimedia.org/wikipedia/en/7/75/Henri_Cartier-Bresson.jpg",
+  "format": "",
+  "sections": [
+    [
+      { "h_350": [] }
+    ],
+    [
+      { "f_auto": [] }
+    ]
+
+  ]
+}`,
+        },
+
+        ///////////////////////////////////////////////////////
       ]
 
       //////////////////////////////////////////////////////
@@ -397,7 +444,13 @@
             })
             assembly.push(parts.join(','))
           })
-          assembly.push(`${data.base_image}.${data.format}`)
+
+          if (data.format !== '') {
+            assembly.push(`${data.base_image}.${data.format}`)
+          } else {
+            assembly.push(data.base_image)
+          }
+
           const output_url = assembly.join('/')
           document.getElementById('output_url').value = output_url
           generate_preview()
@@ -513,23 +566,6 @@
       </div>
 
       <h3 id="examples_section">Examples</h3>
-
-      <!--
-      <button id="e1" class="example_button">Initial Example</button><br />
-      <button id="e2" class="example_button">
-        Make a solid color background of a specific color
-      </button>
-      <br />
-      <button id="e3" class="example_button">Auto line-break text</button>
-      <br />
-      <button id="e4" class="example_button">Use a remote image</button>
-      <br />
-      <button id="e5" class="example_button">
-        Crop in to a circle on a face
-      </button>
-      <br />
-      <button id="e6" class="example_button">Breakup pattern</button>
-      -->
 
       <h3>Notes</h3>
       <ul>
