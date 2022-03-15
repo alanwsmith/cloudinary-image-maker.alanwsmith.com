@@ -371,24 +371,35 @@
           title: 'Crop in on a face with a circular mask',
           notes: [],
           code: `{
-        "root_url": "https://res.cloudinary.com/demo/image/fetch",
-        "base_image": "https://upload.wikimedia.org/wikipedia/commons/d/db/Margaret_Hamilton_-_restoration.jpg",
-        "format": "",
-        "sections": [
-          [
-            { "c_crop": [] },
-            { "g_face": [] },
-            { "h_350": [] },
-            { "w_350": [] }
-          ],
-          [
-            { "r_max": [] }
-          ],
-          [
-            { "f_auto": [] }
-          ]
-        ]
-      }`,
+  "__comments__": [
+
+    "///////////////////////////////////////////////////////////////",
+
+    "Face detection is pretty good, but it's not flawless.",
+
+    "///////////////////////////////////////////////////////////////"
+  ],
+
+          
+  "root_url": "https://res.cloudinary.com/demo/image/upload",
+  "base_image": "face_left",
+  "format": "png",
+  "sections": [
+    [ 
+      { "w_525": [] },
+      { "h_350": [] }
+    ],
+    [
+      { "c_crop": [] },
+      { "g_face": [] },
+      { "w_350": [] },
+      { "h_350": [] }
+    ],
+    [
+      { "r_max": [] }
+    ]
+  ]
+}`,
         },
 
         ///////////////////////////////////////////////////////
