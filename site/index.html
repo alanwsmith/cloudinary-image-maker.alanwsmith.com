@@ -252,6 +252,13 @@
           title: 'Position text',
           notes: [],
           code: `{
+  "__comments__": [
+
+    "///////////////////////////////////////////////////////////////",
+
+    "///////////////////////////////////////////////////////////////"
+  ],
+
   "root_url": "https://res.cloudinary.com/demo/image/upload",
   "base_image": "1px-white",
   "format": "png",
@@ -279,6 +286,14 @@
           title: 'Multiple text fields',
           notes: [],
           code: `{
+
+  "__comments__": [
+
+    "///////////////////////////////////////////////////////////////",
+
+    "///////////////////////////////////////////////////////////////"
+  ],
+
   "root_url": "https://res.cloudinary.com/demo/image/upload",
   "base_image": "1px-white",
   "format": "png",
@@ -319,6 +334,13 @@
           title: 'Automatically wrap long lines of text',
           notes: [],
           code: `{
+  "__comments__": [
+
+    "///////////////////////////////////////////////////////////////",
+
+    "///////////////////////////////////////////////////////////////"
+  ],
+
         "root_url": "https://res.cloudinary.com/demo/image/upload",
         "base_image": "1px-white",
         "format": "png",
@@ -334,32 +356,6 @@
           ],
           [
             { "fl_layer_apply": [] }
-          ]
-        ]
-      }`,
-        },
-
-        ///////////////////////////////////////////////////////
-
-        {
-          title: 'Use a remote image',
-          notes: [
-            `Some urls contain special characters that need to be encoded. This process doesn't try to deal with that.`,
-            `More details are here: https://cloudinary.com/documentation/fetch_remote_images#creating_a_fetch_url_containing_special_characters`,
-            `Note that there's no format here. The 'f_auto' is set to deteremine it`,
-            `If you try to set a format, sometimes it conflicts with the remote URL and breaks the process`,
-            `Check out the multiple remote image call for ways to work around problematic URLs by making the calls via 'l_fetch' and a base64 encoded url`,
-          ],
-          code: `{
-        "root_url": "https://res.cloudinary.com/demo/image/fetch",
-        "base_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg/1920px-Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg",
-        "format": "",
-        "sections": [
-          [
-            { "h_350": [] }
-          ],
-          [
-            { "f_auto": [] }
           ]
         ]
       }`,
@@ -408,6 +404,13 @@
           title: 'Watermark an image',
           notes: [`This gets a breakup pattern started`],
           code: `{
+  "__comments__": [
+
+    "///////////////////////////////////////////////////////////////",
+
+    "///////////////////////////////////////////////////////////////"
+  ],
+
         "root_url": "https://res.cloudinary.com/demo/image/upload",
         "base_image": "horses",
         "format": "png",
@@ -434,6 +437,13 @@
           title: 'Watermark an image in the corner',
           notes: [`This gets a breakup pattern started`],
           code: `{
+  "__comments__": [
+
+    "///////////////////////////////////////////////////////////////",
+
+    "///////////////////////////////////////////////////////////////"
+  ],
+
         "root_url": "https://res.cloudinary.com/demo/image/upload",
         "base_image": "horses",
         "format": "png",
@@ -466,6 +476,13 @@
             `Make an md5 hash of the gravatar user's email address and use it for the base_name`,
           ],
           code: `{
+  "__comments__": [
+
+    "///////////////////////////////////////////////////////////////",
+
+    "///////////////////////////////////////////////////////////////"
+  ],
+
         "root_url": "https://res.cloudinary.com/demo/image/gravatar",
         "base_image": "ec8e27851eef45968d23b9be06ba9eb5",
         "format": "jpg",
@@ -480,12 +497,52 @@
         ///////////////////////////////////////////////////////
 
         {
+          title: 'Use a remote image',
+          notes: [
+            `Some urls contain special characters that need to be encoded. This process doesn't try to deal with that.`,
+            `More details are here: https://cloudinary.com/documentation/fetch_remote_images#creating_a_fetch_url_containing_special_characters`,
+            `Note that there's no format here. The 'f_auto' is set to deteremine it`,
+            `If you try to set a format, sometimes it conflicts with the remote URL and breaks the process`,
+            `Check out the multiple remote image call for ways to work around problematic URLs by making the calls via 'l_fetch' and a base64 encoded url`,
+          ],
+          code: `{
+  "__comments__": [
+
+    "///////////////////////////////////////////////////////////////",
+
+    "///////////////////////////////////////////////////////////////"
+  ],
+
+  "root_url": "https://res.cloudinary.com/demo/image/fetch",
+  "base_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg/1920px-Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg",
+  "format": "",
+  "sections": [
+    [
+      { "h_350": [] }
+    ],
+    [
+      { "f_auto": [] }
+    ]
+  ]
+}`,
+        },
+
+        ///////////////////////////////////////////////////////
+
+        {
           title: 'Multiple remote images',
           notes: [
             `multiple remote images need to be base64 encoded which this process handles.`,
             `the borders in these images are from the source material, not something applied by cloudinary. though, that is possible`,
           ],
           code: `{
+  "__comments__": [
+
+    "///////////////////////////////////////////////////////////////",
+
+    "///////////////////////////////////////////////////////////////"
+  ],
+
         "root_url": "https://res.cloudinary.com/demo/image/upload",
         "base_image": "1px-white",
         "format": "png",
@@ -612,6 +669,13 @@
             `I haven't seen a way to make a color image like this without a source like the 1 pixel image as a starter`,
           ],
           code: `{
+  "__comments__": [
+
+    "///////////////////////////////////////////////////////////////",
+
+    "///////////////////////////////////////////////////////////////"
+  ],
+
         "root_url": "https://res.cloudinary.com/demo/image/upload",
         "base_image": "1px-white",
         "format": "png",
@@ -632,6 +696,13 @@
           title: 'Generate a breakup pattern',
           notes: [`This gets a breakup pattern started`],
           code: `{
+  "__comments__": [
+
+    "///////////////////////////////////////////////////////////////",
+
+    "///////////////////////////////////////////////////////////////"
+  ],
+
         "root_url": "https://res.cloudinary.com/demo/image/upload",
         "base_image": "horses",
         "format": "png",
@@ -648,6 +719,50 @@
             ]
         ]
       }`,
+        },
+
+        ///////////////////////////////////////////////////////
+
+        {
+          title: 'Create a rectangle',
+          code: `{
+  "__comments__": [
+
+    "///////////////////////////////////////////////////////////////",
+
+    "You need an image to generate the shape on top of", 
+
+    "I'm using a 1px image, but anything will do since the size",
+    "is set in the code and the color covers the entire area",
+
+    "///////////////////////////////////////////////////////////////"
+  ],
+
+  "root_url": "https://res.cloudinary.com/demo/image/upload",
+  "base_image": "1px-white",
+  "format": "png",
+  "sections": [
+    [
+      { "w_525": [] },
+      { "h_350": [] }
+    ],
+    [
+      { "l_1px-white": [] }
+    ],
+    [
+      { "w_25": [] },
+      { "h_50": [] },
+      { "b_rgb": ["9a0000"] },
+      { "o_0": [] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_north_west": [] },
+      { "x_40": [] },
+      { "y_40": [] }
+    ]
+  ]
+}`,
         },
 
         ///////////////////////////////////////////////////////
