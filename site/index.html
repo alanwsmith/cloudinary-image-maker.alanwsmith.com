@@ -249,30 +249,91 @@
         ///////////////////////////////////////////////////////
 
         {
+          title: 'Position text',
+          notes: [],
+          code: `{
+  "root_url": "https://res.cloudinary.com/demo/image/upload",
+  "base_image": "1px-white",
+  "format": "png",
+  "sections": [
+    [
+      { "w_525": [] },
+      { "h_350": [] }
+    ],
+    [
+      { "l_text": ["Aldrich_19_bold", "Placed with g_north_west, x_10, y_10" ] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_north_west": [] },
+      { "x_10": [] },
+      { "y_10": [] }
+    ]
+  ]
+}`,
+        },
+
+        ///////////////////////////////////////////////////////
+
+        {
+          title: 'Multiple text fields',
+          notes: [],
+          code: `{
+  "root_url": "https://res.cloudinary.com/demo/image/upload",
+  "base_image": "1px-white",
+  "format": "png",
+  "sections": [
+    [
+      { "w_525": [] },
+      { "h_350": [] }
+    ],
+    [
+      { "l_text": ["ABeeZee_19_bold", "At the top via g_north and y_10" ] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_north": [] },
+      { "y_10": [] }
+    ],
+    [
+      { "l_text": ["Aguafina Script_19_bold", "In the middle (no g_whatever applied)" ] }
+    ],
+    [
+      { "fl_layer_apply": [] }
+    ],
+    [
+      { "l_text": ["Averia Sans Libre_19_bold", "At the bottom via g_south and y_10" ] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_south": [] },
+      { "y_10": [] }
+    ]
+  ]
+}`,
+        },
+
+        ///////////////////////////////////////////////////////
+
+        {
           title: 'Automatically wrap long lines of text',
           notes: [],
           code: `{
         "root_url": "https://res.cloudinary.com/demo/image/upload",
-        "base_image": "horses",
+        "base_image": "1px-white",
         "format": "png",
         "sections": [
           [
-            {"h_350": []}
+            { "w_525": [] },
+            { "h_350": [] }
           ],
           [
-            {"o_0": [] },
-            {"b_rgb": ["afe3c0"] }
+            { "c_fit": [] },
+            { "l_text": ["Arial_13_bold", "This example uses \\"c_fit\\" to automatically wrap text to the next line when it hits the edge of the bounding box defined by \\"w_300\\".\\n\\nNew lines are done with \`\\\\n\\\\n\` and double quotes are done with \`\\\\\\"\`" ] },
+            { "w_300": [] }
           ],
           [
-            {"c_fit": []},
-            {"l_text": ["Arial_13_bold", "This example uses \\"c_fit\\" to automatically wrap text to the next line when it hits the edge of the bounding box defined by \\"w_600\\".\\n\\nThe placement is controlled by the, \\"g_south_east\\",  \\"y_200\\", \\"x_30\\" parameters and the call to \\"fl_layer_apply\\".\\n\\nNew lines are done with \`\\\\n\\\\n\` and double quotes are done with \`\\\\\\"\`" ] },
-            {"w_300": []}
-          ],
-          [
-            { "fl_layer_apply": [] },
-            { "g_south_east": [] },
-            { "y_10": [] },
-            { "x_8": [] }
+            { "fl_layer_apply": [] }
           ]
         ]
       }`,
@@ -531,8 +592,6 @@
       }`,
         },
 
-
-
         ///////////////////////////////////////////////////////
 
         {
@@ -580,11 +639,9 @@
       }`,
         },
 
-
         ///////////////////////////////////////////////////////
         // Close Example Config
         ///////////////////////////////////////////////////////
-
       ]
 
       //////////////////////////////////////////////////////
@@ -785,11 +842,12 @@
 
       <h3>Usage</h3>
       <ul>
-        <li>Both object keys and values require double quotes</li>
         <li>
           Trailing commas don't work (formatters usually spread this across
-          multiple lines, but something like this `['a', 'b', 'c',]` will choke)
+          multiple lines, but something like this `['a', 'b', 'c',]` will
+          choke). If you get an invalid json, that's the first thing to check
         </li>
+        <li>Both object keys and values require double quotes</li>
         <li>
           Each &quot;section&quot; in the &quot;sections&quot; array represents
           code that will go in between slashes in the final url
