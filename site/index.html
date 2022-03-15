@@ -377,6 +377,7 @@
 
       //////////////////////////////////////////////////////
       function updateUrl() {
+        console.log('Updating URL')
         const assembly = []
         try {
           const data = JSON.parse(document.getElementById('source_block').value)
@@ -400,7 +401,9 @@
           assembly.push(`${data.base_image}.${data.format}`)
           const output_url = assembly.join('/')
           document.getElementById('output_url').value = output_url
-          return output_url
+          generate_preview()
+
+          // return output_url
         } catch (error) {
           document.getElementById('output_url').value = 'Invalid JSON'
           console.log('Invalid JSON')
@@ -408,10 +411,12 @@
       }
 
       function generate_preview() {
-        const new_url = updateUrl()
-        if (new_url !== undefined) {
-          document.getElementById('image_preview').src = new_url
-        }
+        console.log('Generting preview')
+        // const new_url = updateUrl()
+        // if (new_url !== undefined) {
+        document.getElementById('image_preview').src =
+          document.getElementById('output_url').value
+        // }
       }
 
       function load_example(event) {
@@ -419,21 +424,11 @@
         const split_id = event.target.id.split('_')
         document.getElementById('source_block').value =
           examples[split_id[1]].code
-        generate_preview()
+        updateUrl()
       }
 
       function setupAndGo() {
-        const source_block = document.getElementById('source_block')
-        source_block.addEventListener('input', updateUrl)
-
-        // Use `examples[0].code` for the first example
-        // Or, `examples[examples.length - 1].code` for the last
-        // source_block.value = examples[0].code
-        source_block.value = examples[examples.length - 1].code
-        const preview_maker = document.getElementById('preview_maker')
-        preview_maker.addEventListener('click', generate_preview)
-        generate_preview()
-
+        // Build example buttons
         const example_section = document.getElementById('examples_section')
         examples.forEach((example, example_index) => {
           example_button = document.createElement('button')
@@ -442,8 +437,18 @@
           example_button.addEventListener('click', load_example)
           example_section.appendChild(example_button)
         })
-      }
 
+        // Setup initial json block
+        const source_block = document.getElementById('source_block')
+        // Use `examples[0].code` for the first example
+        // Or, `examples[examples.length - 1].code` for the last
+        // source_block.value = examples[0].code
+        source_block.value = examples[examples.length - 1].code
+        source_block.addEventListener('input', updateUrl)
+        const preview_maker = document.getElementById('preview_maker')
+        preview_maker.addEventListener('click', generate_preview)
+        updateUrl()
+      }
       document.addEventListener('DOMContentLoaded', setupAndGo)
     </script>
   </head>
@@ -467,7 +472,7 @@
         <img id="image_preview" />
       </div>
       <div>
-        <input type="text" id="output_url" size="70" />
+        <input type="text" id="output_url" size="70" readonly="readonly" />
         <textarea id="source_block" cols="10" rows="12"> </textarea>
         <br />
         <button id="preview_maker">Generate Preview And URL</button>
