@@ -735,11 +735,13 @@
     "I'm using a 1px image, but anything will do since the size",
     "is set in the code and the color covers the entire area",
 
+    "Positioning is done with 'g_', 'x_', and 'y_'",
+
     "///////////////////////////////////////////////////////////////"
   ],
 
   "root_url": "https://res.cloudinary.com/demo/image/upload",
-  "base_image": "1px-white",
+  "base_image": "horses",
   "format": "png",
   "sections": [
     [
@@ -752,12 +754,59 @@
     [
       { "w_25": [] },
       { "h_50": [] },
-      { "b_rgb": ["9a0000"] },
-      { "o_0": [] }
+      { "co_rgb": ["F9331F"] },
+      { "e_colorize": ["100"] }
     ],
     [
       { "fl_layer_apply": [] },
-      { "g_north_west": [] },
+      { "g_south": [] },
+      { "x_40": [] },
+      { "y_40": [] }
+    ]
+  ]
+}`,
+        },
+
+        ///////////////////////////////////////////////////////
+
+        {
+          title: 'Create a circle',
+          code: `{
+  "__comments__": [
+
+    "///////////////////////////////////////////////////////////////",
+
+    "You need an image to generate the shape on top of", 
+
+    "I'm using a 1px image, but I think anything will do since the size",
+    "is set in the code and the color covers the entire area",
+
+    "Positioning is done with 'g_', 'x_', and 'y_'",
+
+    "///////////////////////////////////////////////////////////////"
+  ],
+
+  "root_url": "https://res.cloudinary.com/demo/image/upload",
+  "base_image": "horses",
+  "format": "png",
+  "sections": [
+    [
+      { "w_525": [] },
+      { "h_350": [] }
+    ],
+    [
+      { "l_1px-white": [] }
+    ],
+    [
+      { "w_50": [] },
+      { "h_50": [] },
+      { "co_rgb": ["F9331F"] },
+      { "e_colorize": ["100"] },
+      { "r_max": [] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_east": [] },
       { "x_40": [] },
       { "y_40": [] }
     ]
