@@ -159,14 +159,275 @@
     </style>
 
     <script type="text/javascript">
-      const examples = [
-        ///////////////////////////////////////////////////////
-        {
-          title: 'Initial example',
-          notes: [],
-          code: `{
+            const examples = [
+              ///////////////////////////////////////////////////////
+              {
+                title: 'Initial example',
+                notes: [],
+                code: `{
+              "root_url": "https://res.cloudinary.com/demo/image/upload",
+              "base_image": "horses",
+              "format": "png",
+              "sections": [
+                [
+                  { "w_525": [] },
+                  { "h_350": [] }
+                ],
+                [
+                  {"l_text": ["Oswald_38_bold", "Cloudinary Image Maker" ] }
+                ],
+                [
+                  { "fl_layer_apply": [] },
+                  { "g_north": [] },
+                  { "y_17": [] }
+                ],
+                [
+                  {"c_fit": [] },
+                  {"co_white": [] },
+                  {"w_525": [] },
+                  {"h_20": [] },
+                  {"bo_2px_solid_black": [] },
+                  {"b_rgb": ["FEB61F55"] },
+                  {"l_text": ["Ubuntu_16_bold_stroke_alignmentvalue_center", "Configure text and transformations with JSON" ] }
+                ],
+                [
+                  { "fl_layer_apply": [] },
+                  { "g_north": [] },
+                  { "y_58": [] }
+                ],
+                [
+                  {"c_fit": [] },
+                  {"w_525": [] },
+                  {"h_50": [] },
+                  {"co_rgb": ["ccd1a5"] },
+                  {"bo_2px_solid_black": [] },
+                  {"l_text": ["Ubuntu_18_bold_stroke_alignmentvalue_center", "cloudinary-image-maker.alanwsmith.com" ] }
+                ],
+                [
+                  { "fl_layer_apply": [] },
+                  { "g_south": [] },
+                  { "y_10": [] }
+                ]
+              ]
+            }`,
+              },
+
+              ///////////////////////////////////////////////////////
+
+              {
+                title: 'Generate a background with a specific color',
+                notes: [
+                  `uses a 1 pixel white source image`,
+                  `I haven't seen a way to make a color image like this without a source like the 1 pixel image as a starter`,
+                ],
+                code: `{
+        "root_url": "https://res.cloudinary.com/demo/image/upload",
+        "base_image": "1px-white",
+        "format": "png",
+        "sections": [
+          [
+            { "w_525": [] },
+            { "h_350": [] },
+            { "b_rgb": ["9a0000"] },
+            { "o_0": [] }
+          ]
+        ]
+      }`,
+              },
+
+              ///////////////////////////////////////////////////////
+
+              {
+                title: 'Automatically wrap long lines of text',
+                notes: [],
+                code: `{
         "root_url": "https://res.cloudinary.com/demo/image/upload",
         "base_image": "horses",
+        "format": "png",
+        "sections": [
+          [
+            {"h_350": []}
+          ],
+          [
+            {"o_0": [] },
+            {"b_rgb": ["afe3c0"] }
+          ],
+          [
+            {"c_fit": []},
+            {"l_text": ["Arial_13_bold", "This example uses \\"c_fit\\" to automatically wrap text to the next line when it hits the edge of the bounding box defined by \\"w_600\\".\\n\\nThe placement is controlled by the, \\"g_south_east\\",  \\"y_200\\", \\"x_30\\" parameters and the call to \\"fl_layer_apply\\".\\n\\nNew lines are done with \`\\\\n\\\\n\` and double quotes are done with \`\\\\\\"\`" ] },
+            {"w_300": []}
+          ],
+          [
+            { "fl_layer_apply": [] },
+            { "g_south_east": [] },
+            { "y_10": [] },
+            { "x_8": [] }
+          ]
+        ]
+      }`,
+              },
+
+              ///////////////////////////////////////////////////////
+
+              {
+                title: 'Use a remote image',
+                notes: [
+                  `Some urls contain special characters that need to be encoded. This process doesn't try to deal with that.`,
+                  `More details are here: https://cloudinary.com/documentation/fetch_remote_images#creating_a_fetch_url_containing_special_characters`,
+                  `Note that there's no format here. The 'f_auto' is set to deteremine it`,
+                  `If you try to set a format, sometimes it conflicts with the remote URL and breaks the process`,
+                  `Check out the multiple remote image call for ways to work around problematic URLs by making the calls via `l_fetch` and a base64 encoded url`
+                ],
+                code: `{
+        "root_url": "https://res.cloudinary.com/demo/image/fetch",
+        "base_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg/1920px-Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg",
+        "format": "",
+        "sections": [
+          [
+            { "h_350": [] }
+          ],
+          [
+            { "f_auto": [] }
+          ]
+        ]
+      }`,
+              },
+
+              ///////////////////////////////////////////////////////
+
+              {
+                title: 'Crop in on a face with a circular mask',
+                notes: [],
+                code: `{
+        "root_url": "https://res.cloudinary.com/demo/image/fetch",
+        "base_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg/1920px-Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg",
+        "format": "png",
+        "sections": [
+          [
+            { "c_fill": [] },
+            { "g_face": [] },
+            { "h_350": [] },
+            { "w_350": [] }
+          ],
+          [
+            { "r_max": [] }
+          ],
+          [
+            { "f_auto": [] }
+          ]
+        ]
+      }`,
+              },
+
+              ///////////////////////////////////////////////////////
+
+              {
+                title: 'Generate a breakup pattern',
+                notes: [`This gets a breakup pattern started`],
+                code: `{
+        "root_url": "https://res.cloudinary.com/demo/image/upload",
+        "base_image": "horses",
+        "format": "png",
+        "sections": [
+          [
+            { "h_350": [] },
+            { "b_rgb": ["9a2323"] },
+            { "o_0": [] }
+          ],
+          [ { "e_art": ["sizzle"]} ],
+          [ { "e_noise": ["50"]} ],
+          [
+            { "e_ordered_dither": ["17"] }
+            ]
+        ]
+      }`,
+              },
+
+              ///////////////////////////////////////////////////////
+
+              {
+                title: 'Watermark an image',
+                notes: [`This gets a breakup pattern started`],
+                code: `{
+        "root_url": "https://res.cloudinary.com/demo/image/upload",
+        "base_image": "horses",
+        "format": "png",
+        "sections": [
+          [
+            { "h_350": [] }
+          ],
+          [
+            { "l_cloudinary_icon_blue": [] }
+          ],
+          [
+            { "o_60": [] }
+          ],
+          [
+            { "fl_layer_apply": [] }
+          ]
+        ]
+      }`,
+              },
+
+              ///////////////////////////////////////////////////////
+
+              {
+                title: 'Watermark an image in the corner',
+                notes: [`This gets a breakup pattern started`],
+                code: `{
+        "root_url": "https://res.cloudinary.com/demo/image/upload",
+        "base_image": "horses",
+        "format": "png",
+        "sections": [
+          [
+            { "h_350": [] }
+          ],
+          [
+            { "l_cloudinary_icon_blue": [] }
+          ],
+          [
+            { "w_0.3": [] },
+            { "o_60": [] }
+          ],
+          [
+            { "fl_layer_apply": [] },
+            { "g_south_east": [] },
+            { "y_20": [] },
+            { "x_20": [] }
+          ]
+        ]
+      }`,
+              },
+
+              ///////////////////////////////////////////////////////
+
+              {
+                title: 'Get a Gravatar image',
+                notes: [
+                  `Make an md5 hash of the gravatar user's email address and use it for the base_name`,
+                ],
+                code: `{
+        "root_url": "https://res.cloudinary.com/demo/image/gravatar",
+        "base_image": "ec8e27851eef45968d23b9be06ba9eb5",
+        "format": "jpg",
+        "sections": [
+          [
+            { "h_350": [] }
+          ]
+        ]
+      }`,
+              },
+
+              ///////////////////////////////////////////////////////
+
+              {
+                title: 'Multiple remote images',
+                notes: [
+                  `multiple remote images need to be base64 encoded which this process handles.`,
+                ],
+                code: `{
+        "root_url": "https://res.cloudinary.com/demo/image/upload",
+        "base_image": "1px-white",
         "format": "png",
         "sections": [
           [
@@ -174,369 +435,151 @@
             { "h_350": [] }
           ],
           [
-            {"l_text": ["Oswald_38_bold", "Cloudinary Image Maker" ] }
+            { "l_fetch": ["https://upload.wikimedia.org/wikipedia/commons/2/21/Mandel_zoom_00_mandelbrot_set.jpg"] }
           ],
           [
-            { "fl_layer_apply": [] },
-            { "g_north": [] },
-            { "y_17": [] }
+            { "fl_layer_apply": [] }
           ],
           [
-            {"c_fit": [] },
-            {"co_white": [] },
-            {"w_525": [] },
-            {"h_20": [] },
-            {"bo_2px_solid_black": [] },
-            {"b_rgb": ["FEB61F55"] },
-            {"l_text": ["Ubuntu_16_bold_stroke_alignmentvalue_center", "Configure text and transformations with JSON" ] }
+            { "l_fetch": ["https://upload.wikimedia.org/wikipedia/en/7/75/Henri_Cartier-Bresson.jpg"] }
           ],
           [
-            { "fl_layer_apply": [] },
-            { "g_north": [] },
-            { "y_58": [] }
-          ],
-          [
-            {"c_fit": [] },
-            {"w_525": [] },
-            {"h_50": [] },
-            {"co_rgb": ["ccd1a5"] },
-            {"bo_2px_solid_black": [] },
-            {"l_text": ["Ubuntu_18_bold_stroke_alignmentvalue_center", "cloudinary-image-maker.alanwsmith.com" ] }
-          ],
-          [
-            { "fl_layer_apply": [] },
-            { "g_south": [] },
-            { "y_10": [] }
+            { "fl_layer_apply": [] }
           ]
+
         ]
       }`,
-        },
+              },
 
-        ///////////////////////////////////////////////////////
+              ///////////////////////////////////////////////////////
+            ]
 
-        {
-          title: 'Generate a background with a specific color',
-          notes: [
-            `uses a 1 pixel white source image`,
-            `I haven't seen a way to make a color image like this without a source like the 1 pixel image as a starter`,
-          ],
-          code: `{
-  "root_url": "https://res.cloudinary.com/demo/image/upload",
-  "base_image": "1px-white",
-  "format": "png",
-  "sections": [
-    [
-      { "w_525": [] },
-      { "h_350": [] },
-      { "b_rgb": ["9a0000"] },
-      { "o_0": [] }
-    ]
-  ]
-}`,
-        },
+            //////////////////////////////////////////////////////
+            function updateUrl() {
+              console.log('Updating URL')
+              const assembly = []
+              try {
+                const data = JSON.parse(document.getElementById('source_block').value)
+                assembly.push(data.root_url)
+                data.sections.forEach((section) => {
+                  const parts = []
+                  section.forEach((item) => {
+                    console.log(item)
+                    const item_string = [Object.keys(item)[0]]
+                    console.log(item_string[0])
 
-        ///////////////////////////////////////////////////////
+                    if (item_string[0] === 'l_fetch') {
+                      console.log(`Encoding remote url: ${item[item_string[0]][0]}`)
+                      item_string.push(btoa(item[item_string[0]][0]))
+                    } else {
+                      item[item_string[0]].forEach((sub_string) => {
+                        const encoded_string = encodeURIComponent(sub_string)
+                        const comma_fixed_string = encoded_string.replace(
+                          /%2C/g,
+                          '%252C'
+                        )
+                        item_string.push(comma_fixed_string)
+                      })
+                    }
 
-        {
-          title: 'Automatically wrap long lines of text',
-          notes: [],
-          code: `{
-  "root_url": "https://res.cloudinary.com/demo/image/upload",
-  "base_image": "horses",
-  "format": "png",
-  "sections": [
-    [
-      {"h_350": []}
-    ],
-    [
-      {"o_0": [] },
-      {"b_rgb": ["afe3c0"] }
-    ],
-    [ 
-      {"c_fit": []},
-      {"l_text": ["Arial_13_bold", "This example uses \\"c_fit\\" to automatically wrap text to the next line when it hits the edge of the bounding box defined by \\"w_600\\".\\n\\nThe placement is controlled by the, \\"g_south_east\\",  \\"y_200\\", \\"x_30\\" parameters and the call to \\"fl_layer_apply\\".\\n\\nNew lines are done with \`\\\\n\\\\n\` and double quotes are done with \`\\\\\\"\`" ] },
-      {"w_300": []}
-    ],
-    [
-      { "fl_layer_apply": [] },
-      { "g_south_east": [] },
-      { "y_10": [] },
-      { "x_8": [] }
-    ]
-  ]
-}`,
-        },
+                    parts.push(item_string.join(':'))
+                  })
+                  assembly.push(parts.join(','))
+                })
 
-        ///////////////////////////////////////////////////////
+                if (data.format !== '') {
+                  assembly.push(`${data.base_image}.${data.format}`)
+                } else {
+                  assembly.push(data.base_image)
+                }
 
-        {
-          title: 'Use a remote image',
-          notes: [
-            `Some urls contain special characters that need to be encoded. This process doesn't try to deal with that.`,
-            `More details are here: https://cloudinary.com/documentation/fetch_remote_images#creating_a_fetch_url_containing_special_characters`,
-            `Note that there's no format here. The 'f_auto' is set to deteremine it`,
-            `If you try to set a format, sometimes it conflicts with the remote URL and breaks the process`,
-          ],
-          code: `{
-  "root_url": "https://res.cloudinary.com/demo/image/fetch",
-  "base_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg/1920px-Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg",
-  "format": "",
-  "sections": [
-    [
-      { "h_350": [] }
-    ],
-    [
-      { "f_auto": [] }
-    ]
-  ]
-}`,
-        },
+                const output_url = assembly.join('/')
+                document.getElementById('output_url').value = output_url
+                document.getElementById('new_tab_url').href = output_url
+                generate_preview()
 
-        ///////////////////////////////////////////////////////
-
-        {
-          title: 'Crop in on a face with a circular mask',
-          notes: [],
-          code: `{
-  "root_url": "https://res.cloudinary.com/demo/image/fetch",
-  "base_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg/1920px-Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg",
-  "format": "png",
-  "sections": [
-    [ 
-      { "c_fill": [] },
-      { "g_face": [] },
-      { "h_350": [] },
-      { "w_350": [] }
-    ],
-    [
-      { "r_max": [] }
-    ],
-    [
-      { "f_auto": [] }
-    ]
-  ]
-}`,
-        },
-
-        ///////////////////////////////////////////////////////
-
-        {
-          title: 'Generate a breakup pattern',
-          notes: [`This gets a breakup pattern started`],
-          code: `{
-  "root_url": "https://res.cloudinary.com/demo/image/upload",
-  "base_image": "horses",
-  "format": "png",
-  "sections": [
-    [
-      { "h_350": [] },
-      { "b_rgb": ["9a2323"] },
-      { "o_0": [] }
-    ],
-    [ { "e_art": ["sizzle"]} ],
-    [ { "e_noise": ["50"]} ],
-    [
-      { "e_ordered_dither": ["17"] }
-      ]
-  ]
-}`,
-        },
-
-        ///////////////////////////////////////////////////////
-
-        {
-          title: 'Watermark an image',
-          notes: [`This gets a breakup pattern started`],
-          code: `{
-  "root_url": "https://res.cloudinary.com/demo/image/upload",
-  "base_image": "horses",
-  "format": "png",
-  "sections": [
-    [
-      { "h_350": [] }
-    ],
-    [
-      { "l_cloudinary_icon_blue": [] }
-    ],
-    [
-      { "o_60": [] }
-    ],
-    [
-      { "fl_layer_apply": [] }
-    ]
-  ]
-}`,
-        },
-
-        ///////////////////////////////////////////////////////
-
-        {
-          title: 'Watermark an image in the corner',
-          notes: [`This gets a breakup pattern started`],
-          code: `{
-  "root_url": "https://res.cloudinary.com/demo/image/upload",
-  "base_image": "horses",
-  "format": "png",
-  "sections": [
-    [
-      { "h_350": [] }
-    ],
-    [
-      { "l_cloudinary_icon_blue": [] }
-    ],
-    [
-      { "w_0.3": [] },
-      { "o_60": [] }
-    ],
-    [
-      { "fl_layer_apply": [] },
-      { "g_south_east": [] },
-      { "y_20": [] },
-      { "x_20": [] }
-    ]
-  ]
-}`,
-        },
-
-        ///////////////////////////////////////////////////////
-
-        {
-          title: 'Get a Gravatar image',
-          notes: [
-            `Make an md5 hash of the gravatar user's email address and use it for the base_name`,
-          ],
-          code: `{
-  "root_url": "https://res.cloudinary.com/demo/image/gravatar/",
-  "base_image": "ec8e27851eef45968d23b9be06ba9eb5",
-  "format": "jpg",
-  "sections": [
-    [
-      { "h_350": [] }
-    ]
-  ]
-}`,
-        },
-
-        ///////////////////////////////////////////////////////
-      ]
-
-      //////////////////////////////////////////////////////
-      function updateUrl() {
-        console.log('Updating URL')
-        const assembly = []
-        try {
-          const data = JSON.parse(document.getElementById('source_block').value)
-          assembly.push(data.root_url)
-          data.sections.forEach((section) => {
-            const parts = []
-            section.forEach((item) => {
-              const item_string = [Object.keys(item)[0]]
-              item[item_string[0]].forEach((sub_string) => {
-                const encoded_string = encodeURIComponent(sub_string)
-                const comma_fixed_string = encoded_string.replace(
-                  /%2C/g,
-                  '%252C'
-                )
-                item_string.push(comma_fixed_string)
-              })
-              parts.push(item_string.join(':'))
-            })
-            assembly.push(parts.join(','))
-          })
-
-          if (data.format !== '') {
-            assembly.push(`${data.base_image}.${data.format}`)
-          } else {
-            assembly.push(data.base_image)
-          }
-
-          const output_url = assembly.join('/')
-          document.getElementById('output_url').value = output_url
-          document.getElementById('new_tab_url').href = output_url
-          generate_preview()
-
-          // return output_url
-        } catch (error) {
-          document.getElementById('output_url').value = 'Invalid JSON'
-          console.log('Invalid JSON')
-        }
-      }
-
-      let debounce_count = 0
-      let update_immediately = false
-
-      function generate_preview() {
-        console.log('Got request to generate preview')
-        if (update_immediately === true) {
-          console.log('Updating immediately')
-          update_immediately = false
-          document.getElementById('image_preview').src =
-            document.getElementById('output_url').value
-        } else {
-          console.log(`Updating via debounce`)
-          console.log('Incrementing debouce count')
-          debounce_count += 1
-          var timeoutId = setTimeout(() => {
-            console.log(`Finished debouce wait. Checking if it's safe`)
-            debounce_count -= 1
-            if (debounce_count > 0) {
-              console.log(`Not yet ready: ${debounce_count} left to go`)
-            } else {
-              console.log(`It's ready. do the thing`)
-              document.getElementById('image_preview').src =
-                document.getElementById('output_url').value
-              debounce_count = 0
+                // return output_url
+              } catch (error) {
+                document.getElementById('output_url').value = 'Invalid JSON'
+                console.log('Invalid JSON')
+              }
             }
-          }, 640)
-        }
-      }
 
-      function load_example(event) {
-        console.log(`Loading example: ${event.target.id}`)
-        const split_id = event.target.id.split('_')
-        document.getElementById('source_block').value =
-          examples[split_id[1]].code
-        update_immediately = true
-        updateUrl()
-      }
+            let debounce_count = 0
+            let update_immediately = false
 
-      // Setup copy button
-      function copyClipBoard(event) {
-        // via b1mind :-)
-        let tempInput = document.createElement('textarea')
-        tempInput.value = document.getElementById('output_url').value
-        document.body.appendChild(tempInput)
-        tempInput.select()
-        document.execCommand('copy')
-        document.body.removeChild(tempInput)
-      }
+            function generate_preview() {
+              console.log('Got request to generate preview')
+              if (update_immediately === true) {
+                console.log('Updating immediately')
+                update_immediately = false
+                document.getElementById('image_preview').src =
+                  document.getElementById('output_url').value
+              } else {
+                console.log(`Updating via debounce`)
+                console.log('Incrementing debouce count')
+                debounce_count += 1
+                var timeoutId = setTimeout(() => {
+                  console.log(`Finished debouce wait. Checking if it's safe`)
+                  debounce_count -= 1
+                  if (debounce_count > 0) {
+                    console.log(`Not yet ready: ${debounce_count} left to go`)
+                  } else {
+                    console.log(`It's ready. do the thing`)
+                    document.getElementById('image_preview').src =
+                      document.getElementById('output_url').value
+                    debounce_count = 0
+                  }
+                }, 640)
+              }
+            }
 
-      function setupAndGo() {
-        // Add event listener for copy button
-        const copy_button = document.getElementById('copy_button')
-        copy_button.addEventListener('click', copyClipBoard)
+            function load_example(event) {
+              console.log(`Loading example: ${event.target.id}`)
+              const split_id = event.target.id.split('_')
+              document.getElementById('source_block').value =
+                examples[split_id[1]].code
+              update_immediately = true
+              updateUrl()
+            }
 
-        // Build example buttons
-        const example_section = document.getElementById('examples_section')
-        examples.forEach((example, example_index) => {
-          example_button = document.createElement('button')
-          example_button.id = `example_${example_index}`
-          example_button.innerHTML = examples[example_index].title
-          example_button.addEventListener('click', load_example)
-          example_section.appendChild(example_button)
-        })
+            // Setup copy button
+            function copyClipBoard(event) {
+              // via b1mind :-)
+              let tempInput = document.createElement('textarea')
+              tempInput.value = document.getElementById('output_url').value
+              document.body.appendChild(tempInput)
+              tempInput.select()
+              document.execCommand('copy')
+              document.body.removeChild(tempInput)
+            }
 
-        // Setup initial json block
-        const source_block = document.getElementById('source_block')
-        // Use `examples[0].code` for the first example
-        // Or, `examples[examples.length - 1].code` for the last
-        source_block.value = examples[0].code
-        // source_block.value = examples[examples.length - 1].code
-        source_block.addEventListener('input', updateUrl)
-        update_immediately = true
-        updateUrl()
-      }
-      document.addEventListener('DOMContentLoaded', setupAndGo)
+            function setupAndGo() {
+              // Add event listener for copy button
+              const copy_button = document.getElementById('copy_button')
+              copy_button.addEventListener('click', copyClipBoard)
+
+              // Build example buttons
+              const example_section = document.getElementById('examples_section')
+              examples.forEach((example, example_index) => {
+                example_button = document.createElement('button')
+                example_button.id = `example_${example_index}`
+                example_button.innerHTML = examples[example_index].title
+                example_button.addEventListener('click', load_example)
+                example_section.appendChild(example_button)
+              })
+
+              // Setup initial json block
+              const source_block = document.getElementById('source_block')
+              // Use `examples[0].code` for the first example
+              // Or, `examples[examples.length - 1].code` for the last
+              source_block.value = examples[0].code
+              // source_block.value = examples[examples.length - 1].code
+              source_block.addEventListener('input', updateUrl)
+              update_immediately = true
+              updateUrl()
+            }
+            document.addEventListener('DOMContentLoaded', setupAndGo)
     </script>
   </head>
   <body>
@@ -587,6 +630,11 @@
           Cloudinary's api does a bunch of stuff. This doesn't cover everything,
           but it'll get you pretty far. (and you can always just drop an entire
           string with whatever you want into a section to trigger it)
+        </li>
+        <li>
+          You're supposed to be able to get images from Twitter and YouTube, but
+          those failed for me even when I hand assembled the urls based of the
+          documentation.
         </li>
       </ul>
       <h3>Usage</h3>
