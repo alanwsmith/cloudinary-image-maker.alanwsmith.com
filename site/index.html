@@ -455,8 +455,6 @@
         // source_block.value = examples[0].code
         source_block.value = examples[examples.length - 1].code
         source_block.addEventListener('input', updateUrl)
-        const preview_maker = document.getElementById('preview_maker')
-        preview_maker.addEventListener('click', generate_preview)
         updateUrl()
       }
       document.addEventListener('DOMContentLoaded', setupAndGo)
@@ -484,8 +482,6 @@
       <div>
         <input type="text" id="output_url" size="70" readonly="readonly" />
         <textarea id="source_block" cols="10" rows="12"> </textarea>
-        <br />
-        <button id="preview_maker">Generate Preview And URL</button>
       </div>
 
       <h3 id="examples_section">Examples</h3>
