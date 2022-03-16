@@ -187,6 +187,7 @@
           code: `{
   "_comments": [
     "///////////////////////////////////////////////////////////////",
+
     "Welcome to the Cloudiary Image Maker",
 
     "Use it to configure a cloudinary image transformation url",
@@ -196,6 +197,7 @@
     "It's a good starting point for Open Graph (OG) social images",
 
     "More notes on usage are further down the page",
+
     "///////////////////////////////////////////////////////////////"
   ],
   
@@ -256,11 +258,15 @@
 
     "///////////////////////////////////////////////////////////////",
 
+    "Positioning text is done by creating an 'l_text' text layer",
+    "when using gravity (e.g. 'g_north_west') and 'x_' and 'y_'",
+    "offsets for the position",
+
     "///////////////////////////////////////////////////////////////"
   ],
 
   "root_url": "https://res.cloudinary.com/demo/image/upload",
-  "base_image": "1px-white",
+  "base_image": "base",
   "format": "png",
   "sections": [
     [
@@ -291,11 +297,15 @@
 
     "///////////////////////////////////////////////////////////////",
 
+    "Multiple text layers are possible to creating each layer with",
+    "'l_text', then placing it with 'fl_layer_apply' before moving",
+    "on to the next one",
+
     "///////////////////////////////////////////////////////////////"
   ],
 
   "root_url": "https://res.cloudinary.com/demo/image/upload",
-  "base_image": "1px-white",
+  "base_image": "base",
   "format": "png",
   "sections": [
     [
@@ -331,6 +341,52 @@
         ///////////////////////////////////////////////////////
 
         {
+          title: 'Text color and borders',
+          notes: [],
+          code: `{
+  "__comments__": [
+
+    "///////////////////////////////////////////////////////////////",
+
+    "Use 'co_rgb' to set the font color and 'bo_3px_solid_rgb' to",
+    "set a border of 3 pixels.",
+
+    "Note that the font name must have '_stroke' in it for the",
+    "border to work properly",
+
+    "Setting the 'w_300' and 'c_fit' is necessary to prevent the",
+    "border stroke line from being cut off at the start and end",
+    "of the string. (You might need to do height ('h_') as well.",
+
+
+    "///////////////////////////////////////////////////////////////"
+  ],
+
+  "root_url": "https://res.cloudinary.com/demo/image/upload",
+  "base_image": "base",
+  "format": "png",
+  "sections": [
+    [
+      { "w_525": [] },
+      { "h_350": [] }
+    ],
+    [
+      { "c_fit": [] },
+      { "w_300": [] },
+      { "co_rgb": ["274628"] },
+      { "bo_10px_solid_rgb": ["732287"] },
+      { "l_text": ["Kurale_19_stroke_bold_center", "This has a color and a border"] }
+    ],
+    [
+      { "fl_layer_apply": [] }
+    ]
+  ]
+}`,
+        },
+
+        ///////////////////////////////////////////////////////
+
+        {
           title: 'Automatically wrap long lines of text',
           notes: [],
           code: `{
@@ -342,7 +398,7 @@
   ],
 
         "root_url": "https://res.cloudinary.com/demo/image/upload",
-        "base_image": "1px-white",
+        "base_image": "base",
         "format": "png",
         "sections": [
           [
@@ -544,7 +600,7 @@
   ],
 
         "root_url": "https://res.cloudinary.com/demo/image/upload",
-        "base_image": "1px-white",
+        "base_image": "base",
         "format": "png",
         "sections": [
           [
@@ -664,20 +720,22 @@
 
         {
           title: 'Generate a background with a specific color',
-          notes: [
-            `uses a 1 pixel white source image`,
-            `I haven't seen a way to make a color image like this without a source like the 1 pixel image as a starter`,
-          ],
           code: `{
   "__comments__": [
 
     "///////////////////////////////////////////////////////////////",
 
+    "This uses an image named base that's nothing but a white square",
+
+    "The actual image doesn't matter as the entire thing is",
+    "colored over",
+
+
     "///////////////////////////////////////////////////////////////"
   ],
 
         "root_url": "https://res.cloudinary.com/demo/image/upload",
-        "base_image": "1px-white",
+        "base_image": "base",
         "format": "png",
         "sections": [
           [
@@ -1078,7 +1136,12 @@
           documentation.
         </li>
         <li>
-          I put together a list of
+          The text samples show how to set fonts like 'Averia Sans
+          Libre_19_bold'. Leave any spaces in the font names and they'll be
+          formatted correctly when the url is generated.
+        </li>
+        <li>
+          Some google fonts are available for use. I put together a list here:
           <a
             href="https://www.alanwsmith.com/posts/26mqi8ovvtka--google-fonts-you-can-use-in-cloudinary-transformations"
             >google fonts you can use in cloudinary transformations</a
