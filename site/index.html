@@ -186,6 +186,7 @@
           notes: [],
           code: `{
   "__INTRO__": [
+
     "///////////////////////////////////////////////////////////////",
 
     "Welcome to Cloudiary Image Maker. You can use it to configure",
@@ -202,7 +203,7 @@
   "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
   "BASE_IMAGE": "horses",
   "FORMAT": "png",
-  "sections": [
+  "SECTIONS": [
     [
       { "w_525": [] },
       { "h_350": [] }
@@ -266,7 +267,7 @@
   "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
   "BASE_IMAGE": "base",
   "FORMAT": "png",
-  "sections": [
+  "SECTIONS": [
     [
       { "w_525": [] },
       { "h_350": [] }
@@ -290,7 +291,6 @@
           title: 'Multiple text fields',
           notes: [],
           code: `{
-
   "__INTRO__": [
 
     "///////////////////////////////////////////////////////////////",
@@ -305,7 +305,7 @@
   "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
   "BASE_IMAGE": "base",
   "FORMAT": "png",
-  "sections": [
+  "SECTIONS": [
     [
       { "w_525": [] },
       { "h_350": [] }
@@ -363,7 +363,7 @@
   "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
   "BASE_IMAGE": "base",
   "FORMAT": "png",
-  "sections": [
+  "SECTIONS": [
     [
       { "w_525": [] },
       { "h_350": [] }
@@ -397,24 +397,24 @@
     "///////////////////////////////////////////////////////////////"
   ],
 
-        "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
-        "BASE_IMAGE": "base",
-        "FORMAT": "png",
-        "sections": [
-          [
-            { "w_525": [] },
-            { "h_350": [] }
-          ],
-          [
-            { "c_fit": [] },
-            { "l_text": ["Arial_13_bold", "This example uses \\"c_fit\\" to automatically wrap text to the next line when it hits the edge of the bounding box defined by \\"w_300\\".\\n\\nNew lines are done with \`\\\\n\\\\n\` and double quotes are done with \`\\\\\\"\`" ] },
-            { "w_300": [] }
-          ],
-          [
-            { "fl_layer_apply": [] }
-          ]
-        ]
-      }`,
+  "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
+  "BASE_IMAGE": "base",
+  "FORMAT": "png",
+  "SECTIONS": [
+    [
+      { "w_525": [] },
+      { "h_350": [] }
+    ],
+    [
+      { "c_fit": [] },
+      { "l_text": ["Arial_13_bold", "This example uses \\"c_fit\\" to automatically wrap text to the next line when it hits the edge of the bounding box defined by \\"w_300\\".\\n\\nNew lines are done with \`\\\\n\\\\n\` and double quotes are done with \`\\\\\\"\`" ] },
+      { "w_300": [] }
+    ],
+    [
+      { "fl_layer_apply": [] }
+    ]
+  ]
+}`,
         },
 
         ///////////////////////////////////////////////////////
@@ -436,7 +436,7 @@
   "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
   "BASE_IMAGE": "face_left",
   "FORMAT": "png",
-  "sections": [
+  "SECTIONS": [
     [ 
       { "w_525": [] },
       { "h_350": [] }
@@ -476,7 +476,7 @@
   "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
   "BASE_IMAGE": "horses",
   "FORMAT": "png",
-  "sections": [
+  "SECTIONS": [
     [
       { "h_350": [] }
     ],
@@ -501,57 +501,61 @@
 
     "///////////////////////////////////////////////////////////////",
 
+    "This is the same approach as the previos watermark, but",
+    "the image size has been reduce to 30% with 'w_0.3' and the",
+    "image moved via: 'g_south_east', 'x_20', 'y_20'",
+
     "///////////////////////////////////////////////////////////////"
   ],
 
-        "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
-        "BASE_IMAGE": "horses",
-        "FORMAT": "png",
-        "sections": [
-          [
-            { "h_350": [] }
-          ],
-          [
-            { "l_cloudinary_icon_blue": [] }
-          ],
-          [
-            { "w_0.3": [] },
-            { "o_60": [] }
-          ],
-          [
-            { "fl_layer_apply": [] },
-            { "g_south_east": [] },
-            { "y_20": [] },
-            { "x_20": [] }
-          ]
-        ]
-      }`,
+  "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
+  "BASE_IMAGE": "horses",
+  "FORMAT": "png",
+  "SECTIONS": [
+    [
+      { "h_350": [] }
+    ],
+    [
+      { "l_cloudinary_icon_blue": [] }
+    ],
+    [
+      { "w_0.3": [] },
+      { "o_60": [] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_south_east": [] },
+      { "x_20": [] },
+      { "y_20": [] }
+    ]
+  ]
+}`,
         },
 
         ///////////////////////////////////////////////////////
 
         {
           title: 'Get a Gravatar image',
-          notes: [
-            `Make an md5 hash of the gravatar user's email address and use it for the base_name`,
-          ],
           code: `{
   "__INTRO__": [
 
     "///////////////////////////////////////////////////////////////",
 
+    "Pulling gravatar images is done by making an md5 hash of",
+    "the email address associated with the image",
+
     "///////////////////////////////////////////////////////////////"
   ],
 
-        "ROOT_URL": "https://res.cloudinary.com/demo/image/gravatar",
-        "BASE_IMAGE": "ec8e27851eef45968d23b9be06ba9eb5",
-        "FORMAT": "jpg",
-        "sections": [
-          [
-            { "h_350": [] }
-          ]
-        ]
-      }`,
+  "ROOT_URL": "https://res.cloudinary.com/demo/image/gravatar",
+  "BASE_IMAGE": "ec8e27851eef45968d23b9be06ba9eb5",
+  "FORMAT": "jpg",
+  "SECTIONS": [
+    [
+      { "h_350": [] }
+    ]
+  ]
+}`,
         },
 
         ///////////////////////////////////////////////////////
@@ -570,13 +574,24 @@
 
     "///////////////////////////////////////////////////////////////",
 
+    "Calling image from other sites is possible assuming the",
+    "account has been setup to allow it. Here, the image is",
+    "called as the last part in the URL.",
+
+    "Note that no FORMAT was set as that can mess with the image",
+    "pull. This example uses 'f_auto' to set the final output to",
+    "what cloudinary determines is the best one",
+
+    "If you need to define the format explicitly, you can use",
+    "the layer approach in the multiple remote images example",
+
     "///////////////////////////////////////////////////////////////"
   ],
 
   "ROOT_URL": "https://res.cloudinary.com/demo/image/fetch",
   "BASE_IMAGE": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg/1920px-Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg",
   "FORMAT": "",
-  "sections": [
+  "SECTIONS": [
     [
       { "h_350": [] }
     ],
@@ -600,124 +615,137 @@
 
     "///////////////////////////////////////////////////////////////",
 
+    "Calling multiple remote images requries the URLs to be",
+    "base64 encoded. That's handled here automatically so you can",
+    "just use the normal url",
+
+    "The pattern is to define the image to call with 'l_fetch'", 
+    "apply any settings in the next section (e.g. 'w_100'), then",
+    "place it with the 'fl_layer_apply' call and optional",
+    "gravity ('g_') and 'x_' and 'y_' offsets.",
+
+    "Note that the 'base' image in this case is plain white",
+    "image that is stretched to the desired dimensions via",
+    "the first section's 'w_525' and 'h_350'",
+
     "///////////////////////////////////////////////////////////////"
   ],
 
-        "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
-        "BASE_IMAGE": "base",
-        "FORMAT": "png",
-        "sections": [
-          [
-            { "w_525": [] },
-            { "h_350": [] }
-          ],
+  "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
+  "BASE_IMAGE": "base",
+  "FORMAT": "png",
+  "SECTIONS": [
+    [
+      { "w_525": [] },
+      { "h_350": [] }
+    ],
 
-          [
-            { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24600/3c24690r.jpg"] }
-          ],
-          [
-            { "w_100": [] }
-          ],
-          [
-            { "fl_layer_apply": [] },
-            { "g_north_west": [] },
-            { "y_20": [] },
-            { "x_25": [] }
-          ],
+    [
+      { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24600/3c24690r.jpg"] }
+    ],
+    [
+      { "w_100": [] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_north_west": [] },
+      { "y_20": [] },
+      { "x_25": [] }
+    ],
 
-          [
-            { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24600/3c24694r.jpg"] }
-          ],
-          [
-            { "w_100": [] }
-          ],
-          [
-            { "fl_layer_apply": [] },
-            { "g_north_west": [] },
-            { "y_20": [] },
-            { "x_150": [] }
-          ],
+    [
+      { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24600/3c24694r.jpg"] }
+    ],
+    [
+      { "w_100": [] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_north_west": [] },
+      { "y_20": [] },
+      { "x_150": [] }
+    ],
 
-          [
-            { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24700/3c24714r.jpg"] }
-          ],
-          [
-            { "w_100": [] }
-          ],
-          [
-            { "fl_layer_apply": [] },
-            { "g_north_west": [] },
-            { "y_20": [] },
-            { "x_275": [] }
-          ],
+    [
+      { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24700/3c24714r.jpg"] }
+    ],
+    [
+      { "w_100": [] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_north_west": [] },
+      { "y_20": [] },
+      { "x_275": [] }
+    ],
 
-          [
-            { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24700/3c24711r.jpg"] }
-          ],
-          [
-            { "w_100": [] }
-          ],
-          [
-            { "fl_layer_apply": [] },
-            { "g_north_west": [] },
-            { "y_20": [] },
-            { "x_400": [] }
-          ],
+    [
+      { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24700/3c24711r.jpg"] }
+    ],
+    [
+      { "w_100": [] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_north_west": [] },
+      { "y_20": [] },
+      { "x_400": [] }
+    ],
 
-          [
-            { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24700/3c24701r.jpg"] }
-          ],
-          [
-            { "w_100": [] }
-          ],
-          [
-            { "fl_layer_apply": [] },
-            { "g_north_west": [] },
-            { "y_180": [] },
-            { "x_25": [] }
-          ],
+    [
+      { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24700/3c24701r.jpg"] }
+    ],
+    [
+      { "w_100": [] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_north_west": [] },
+      { "y_180": [] },
+      { "x_25": [] }
+    ],
 
-          [
-            { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24700/3c24705r.jpg"] }
-          ],
-          [
-            { "w_100": [] }
-          ],
-          [
-            { "fl_layer_apply": [] },
-            { "g_north_west": [] },
-            { "y_180": [] },
-            { "x_150": [] }
-          ],
+    [
+      { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24700/3c24705r.jpg"] }
+    ],
+    [
+      { "w_100": [] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_north_west": [] },
+      { "y_180": [] },
+      { "x_150": [] }
+    ],
 
-          [
-            { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24700/3c24707r.jpg"] }
-          ],
-          [
-            { "w_100": [] }
-          ],
-          [
-            { "fl_layer_apply": [] },
-            { "g_north_west": [] },
-            { "y_180": [] },
-            { "x_275": [] }
-          ],
+    [
+      { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24700/3c24707r.jpg"] }
+    ],
+    [
+      { "w_100": [] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_north_west": [] },
+      { "y_180": [] },
+      { "x_275": [] }
+    ],
 
-          [
-            { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24700/3c24708r.jpg"] }
-          ],
-          [
-            { "w_100": [] }
-          ],
-          [
-            { "fl_layer_apply": [] },
-            { "g_north_west": [] },
-            { "y_180": [] },
-            { "x_400": [] }
-          ]
+    [
+      { "l_fetch": ["https://tile.loc.gov/storage-services/service/pnp/cph/3c20000/3c24000/3c24700/3c24708r.jpg"] }
+    ],
+    [
+      { "w_100": [] }
+    ],
+    [
+      { "fl_layer_apply": [] },
+      { "g_north_west": [] },
+      { "y_180": [] },
+      { "x_400": [] }
+    ]
 
-        ]
-      }`,
+  ]
+}`,
         },
 
         ///////////////////////////////////////////////////////
@@ -734,22 +762,21 @@
     "The actual image doesn't matter as the entire thing is",
     "colored over",
 
-
     "///////////////////////////////////////////////////////////////"
   ],
 
-        "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
-        "BASE_IMAGE": "base",
-        "FORMAT": "png",
-        "sections": [
-          [
-            { "w_525": [] },
-            { "h_350": [] },
-            { "b_rgb": ["9a0000"] },
-            { "o_0": [] }
-          ]
-        ]
-      }`,
+  "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
+  "BASE_IMAGE": "base",
+  "FORMAT": "png",
+  "SECTIONS": [
+    [
+      { "w_525": [] },
+      { "h_350": [] },
+      { "b_rgb": ["9a0000"] },
+      { "o_0": [] }
+    ]
+  ]
+}`,
         },
 
         ///////////////////////////////////////////////////////
@@ -762,25 +789,31 @@
 
     "///////////////////////////////////////////////////////////////",
 
+    "This was just an experiment to see about creating a pattern",
+    "with nothing but a white image to start with. There's not",
+    "a lot of options, but playing various transformations and",
+    "artistic filters might lead to some interesting effects",
+
     "///////////////////////////////////////////////////////////////"
   ],
 
-        "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
-        "BASE_IMAGE": "horses",
-        "FORMAT": "png",
-        "sections": [
-          [
-            { "h_350": [] },
-            { "b_rgb": ["9a2323"] },
-            { "o_0": [] }
-          ],
-          [ { "e_art": ["sizzle"]} ],
-          [ { "e_noise": ["50"]} ],
-          [
-            { "e_ordered_dither": ["17"] }
-            ]
-        ]
-      }`,
+  "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
+  "BASE_IMAGE": "base",
+  "FORMAT": "png",
+  "SECTIONS": [
+    [
+      { "w_525": [] },
+      { "h_350": [] },
+      { "b_rgb": ["9a2323"] },
+      { "o_0": [] }
+    ],
+    [ { "e_art": ["sizzle"]} ],
+    [ { "e_noise": ["50"]} ],
+    [
+      { "e_ordered_dither": ["17"] }
+      ]
+  ]
+}`,
         },
 
         ///////////////////////////////////////////////////////
@@ -792,12 +825,15 @@
 
     "///////////////////////////////////////////////////////////////",
 
-    "You need an image to generate the shape on top of", 
-
-    "I'm using a 1px image, but anything will do since the size",
-    "is set in the code and the color covers the entire area",
+    "It's possible to create basic shapes by completely covering",
+    "an image on a layer. I'm using a 1px-wite sample image as",
+    "the base, but anything will do since the size is set in",
+    "the code and the color covers the entire area",
 
     "Positioning is done with 'g_', 'x_', and 'y_'",
+  
+    "The color is defined via 'co_rgb' and then applied with",
+    "'e_colorize' set to 100",
 
     "///////////////////////////////////////////////////////////////"
   ],
@@ -805,7 +841,7 @@
   "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
   "BASE_IMAGE": "horses",
   "FORMAT": "png",
-  "sections": [
+  "SECTIONS": [
     [
       { "w_525": [] },
       { "h_350": [] }
@@ -838,12 +874,8 @@
 
     "///////////////////////////////////////////////////////////////",
 
-    "You need an image to generate the shape on top of", 
-
-    "I'm using a 1px image, but I think anything will do since the size",
-    "is set in the code and the color covers the entire area",
-
-    "Positioning is done with 'g_', 'x_', and 'y_'",
+    "Same basic setup as the rectangle, but 'r_max' is used",
+    "turn it into a circle",
 
     "///////////////////////////////////////////////////////////////"
   ],
@@ -851,7 +883,7 @@
   "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
   "BASE_IMAGE": "horses",
   "FORMAT": "png",
-  "sections": [
+  "SECTIONS": [
     [
       { "w_525": [] },
       { "h_350": [] }
@@ -911,7 +943,7 @@
   "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
   "BASE_IMAGE": "horses",
   "FORMAT": "png",
-  "sections": [
+  "SECTIONS": [
     [
       { "w_525": [] },
       { "h_350": [] }
@@ -964,7 +996,7 @@
         try {
           const data = JSON.parse(document.getElementById('source_block').value)
           assembly.push(data.ROOT_URL)
-          data.sections.forEach((section) => {
+          data.SECTIONS.forEach((section) => {
             const parts = []
             section.forEach((item) => {
               console.log(item)
@@ -1165,7 +1197,7 @@
         </li>
         <li>Both object keys and values require double quotes</li>
         <li>
-          Each &quot;section&quot; in the &quot;sections&quot; array represents
+          Each &quot;section&quot; in the &quot;SECTIONS&quot; array represents
           code that will go in between slashes in the final url
         </li>
         <li>Each section is itself an array of item objects</li>
