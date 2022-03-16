@@ -185,25 +185,23 @@
           title: 'Initial example',
           notes: [],
           code: `{
-  "_comments": [
+  "__INTRO__": [
     "///////////////////////////////////////////////////////////////",
 
-    "Welcome to the Cloudiary Image Maker",
+    "Welcome to Cloudiary Image Maker. You can use it to configure",
+    "a cloudinary image transformation url. For example, the above",
+    "image was generated from this json",
 
-    "Use it to configure a cloudinary image transformation url",
-
-    "e.g. the image text above was configured through this json",
-
-    "It's a good starting point for Open Graph (OG) social images",
-
-    "More notes on usage are further down the page",
+    "I made this to make it easier to design open graph (OG)", 
+    "images for social image cards before implementing them",
+    "in my sites. I hope you find it useful. -alan",
 
     "///////////////////////////////////////////////////////////////"
   ],
   
-  "root_url": "https://res.cloudinary.com/demo/image/upload",
-  "base_image": "horses",
-  "format": "png",
+  "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
+  "BASE_IMAGE": "horses",
+  "FORMAT": "png",
   "sections": [
     [
       { "w_525": [] },
@@ -254,7 +252,7 @@
           title: 'Position text',
           notes: [],
           code: `{
-  "__comments__": [
+  "__INTRO__": [
 
     "///////////////////////////////////////////////////////////////",
 
@@ -265,9 +263,9 @@
     "///////////////////////////////////////////////////////////////"
   ],
 
-  "root_url": "https://res.cloudinary.com/demo/image/upload",
-  "base_image": "base",
-  "format": "png",
+  "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
+  "BASE_IMAGE": "base",
+  "FORMAT": "png",
   "sections": [
     [
       { "w_525": [] },
@@ -293,7 +291,7 @@
           notes: [],
           code: `{
 
-  "__comments__": [
+  "__INTRO__": [
 
     "///////////////////////////////////////////////////////////////",
 
@@ -304,9 +302,9 @@
     "///////////////////////////////////////////////////////////////"
   ],
 
-  "root_url": "https://res.cloudinary.com/demo/image/upload",
-  "base_image": "base",
-  "format": "png",
+  "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
+  "BASE_IMAGE": "base",
+  "FORMAT": "png",
   "sections": [
     [
       { "w_525": [] },
@@ -344,7 +342,7 @@
           title: 'Text color and borders',
           notes: [],
           code: `{
-  "__comments__": [
+  "__INTRO__": [
 
     "///////////////////////////////////////////////////////////////",
 
@@ -362,9 +360,9 @@
     "///////////////////////////////////////////////////////////////"
   ],
 
-  "root_url": "https://res.cloudinary.com/demo/image/upload",
-  "base_image": "base",
-  "format": "png",
+  "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
+  "BASE_IMAGE": "base",
+  "FORMAT": "png",
   "sections": [
     [
       { "w_525": [] },
@@ -388,18 +386,20 @@
 
         {
           title: 'Automatically wrap long lines of text',
-          notes: [],
           code: `{
-  "__comments__": [
+  "__INTRO__": [
 
     "///////////////////////////////////////////////////////////////",
+
+    "Adding 'c_fit' to a 'l_text' layer that has a width set",
+    "via 'w_' will automatically wrap the text.",
 
     "///////////////////////////////////////////////////////////////"
   ],
 
-        "root_url": "https://res.cloudinary.com/demo/image/upload",
-        "base_image": "base",
-        "format": "png",
+        "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
+        "BASE_IMAGE": "base",
+        "FORMAT": "png",
         "sections": [
           [
             { "w_525": [] },
@@ -423,7 +423,7 @@
           title: 'Crop in on a face with a circular mask',
           notes: [],
           code: `{
-  "__comments__": [
+  "__INTRO__": [
 
     "///////////////////////////////////////////////////////////////",
 
@@ -433,9 +433,9 @@
   ],
 
           
-  "root_url": "https://res.cloudinary.com/demo/image/upload",
-  "base_image": "face_left",
-  "format": "png",
+  "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
+  "BASE_IMAGE": "face_left",
+  "FORMAT": "png",
   "sections": [
     [ 
       { "w_525": [] },
@@ -460,31 +460,35 @@
           title: 'Watermark an image',
           notes: [`This gets a breakup pattern started`],
           code: `{
-  "__comments__": [
+  "__INTRO__": [
 
     "///////////////////////////////////////////////////////////////",
+
+    "In this case, the source image name for watermark", 
+    "is: 'cloudinary_icon_blue'. A new layer with that image",
+    "is created with 'l_cloudinary_icon_blue' and the opacity",
+    "is set to 60% with 'o_60'. The layer is applied to the",
+    "image with the 'fl_layer_apply' call",
 
     "///////////////////////////////////////////////////////////////"
   ],
 
-        "root_url": "https://res.cloudinary.com/demo/image/upload",
-        "base_image": "horses",
-        "format": "png",
-        "sections": [
-          [
-            { "h_350": [] }
-          ],
-          [
-            { "l_cloudinary_icon_blue": [] }
-          ],
-          [
-            { "o_60": [] }
-          ],
-          [
-            { "fl_layer_apply": [] }
-          ]
-        ]
-      }`,
+  "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
+  "BASE_IMAGE": "horses",
+  "FORMAT": "png",
+  "sections": [
+    [
+      { "h_350": [] }
+    ],
+    [
+      { "l_cloudinary_icon_blue": [] },
+      { "o_60": [] }
+    ],
+    [
+      { "fl_layer_apply": [] }
+    ]
+  ]
+}`,
         },
 
         ///////////////////////////////////////////////////////
@@ -493,16 +497,16 @@
           title: 'Watermark an image in the corner',
           notes: [`This gets a breakup pattern started`],
           code: `{
-  "__comments__": [
+  "__INTRO__": [
 
     "///////////////////////////////////////////////////////////////",
 
     "///////////////////////////////////////////////////////////////"
   ],
 
-        "root_url": "https://res.cloudinary.com/demo/image/upload",
-        "base_image": "horses",
-        "format": "png",
+        "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
+        "BASE_IMAGE": "horses",
+        "FORMAT": "png",
         "sections": [
           [
             { "h_350": [] }
@@ -532,16 +536,16 @@
             `Make an md5 hash of the gravatar user's email address and use it for the base_name`,
           ],
           code: `{
-  "__comments__": [
+  "__INTRO__": [
 
     "///////////////////////////////////////////////////////////////",
 
     "///////////////////////////////////////////////////////////////"
   ],
 
-        "root_url": "https://res.cloudinary.com/demo/image/gravatar",
-        "base_image": "ec8e27851eef45968d23b9be06ba9eb5",
-        "format": "jpg",
+        "ROOT_URL": "https://res.cloudinary.com/demo/image/gravatar",
+        "BASE_IMAGE": "ec8e27851eef45968d23b9be06ba9eb5",
+        "FORMAT": "jpg",
         "sections": [
           [
             { "h_350": [] }
@@ -562,16 +566,16 @@
             `Check out the multiple remote image call for ways to work around problematic URLs by making the calls via 'l_fetch' and a base64 encoded url`,
           ],
           code: `{
-  "__comments__": [
+  "__INTRO__": [
 
     "///////////////////////////////////////////////////////////////",
 
     "///////////////////////////////////////////////////////////////"
   ],
 
-  "root_url": "https://res.cloudinary.com/demo/image/fetch",
-  "base_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg/1920px-Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg",
-  "format": "",
+  "ROOT_URL": "https://res.cloudinary.com/demo/image/fetch",
+  "BASE_IMAGE": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg/1920px-Commodore_Grace_M._Hopper%2C_USN_%28covered%29.jpg",
+  "FORMAT": "",
   "sections": [
     [
       { "h_350": [] }
@@ -592,16 +596,16 @@
             `the borders in these images are from the source material, not something applied by cloudinary. though, that is possible`,
           ],
           code: `{
-  "__comments__": [
+  "__INTRO__": [
 
     "///////////////////////////////////////////////////////////////",
 
     "///////////////////////////////////////////////////////////////"
   ],
 
-        "root_url": "https://res.cloudinary.com/demo/image/upload",
-        "base_image": "base",
-        "format": "png",
+        "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
+        "BASE_IMAGE": "base",
+        "FORMAT": "png",
         "sections": [
           [
             { "w_525": [] },
@@ -721,7 +725,7 @@
         {
           title: 'Generate a background with a specific color',
           code: `{
-  "__comments__": [
+  "__INTRO__": [
 
     "///////////////////////////////////////////////////////////////",
 
@@ -734,9 +738,9 @@
     "///////////////////////////////////////////////////////////////"
   ],
 
-        "root_url": "https://res.cloudinary.com/demo/image/upload",
-        "base_image": "base",
-        "format": "png",
+        "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
+        "BASE_IMAGE": "base",
+        "FORMAT": "png",
         "sections": [
           [
             { "w_525": [] },
@@ -754,16 +758,16 @@
           title: 'Generate a breakup pattern',
           notes: [`This gets a breakup pattern started`],
           code: `{
-  "__comments__": [
+  "__INTRO__": [
 
     "///////////////////////////////////////////////////////////////",
 
     "///////////////////////////////////////////////////////////////"
   ],
 
-        "root_url": "https://res.cloudinary.com/demo/image/upload",
-        "base_image": "horses",
-        "format": "png",
+        "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
+        "BASE_IMAGE": "horses",
+        "FORMAT": "png",
         "sections": [
           [
             { "h_350": [] },
@@ -784,7 +788,7 @@
         {
           title: 'Create a rectangle',
           code: `{
-  "__comments__": [
+  "__INTRO__": [
 
     "///////////////////////////////////////////////////////////////",
 
@@ -798,9 +802,9 @@
     "///////////////////////////////////////////////////////////////"
   ],
 
-  "root_url": "https://res.cloudinary.com/demo/image/upload",
-  "base_image": "horses",
-  "format": "png",
+  "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
+  "BASE_IMAGE": "horses",
+  "FORMAT": "png",
   "sections": [
     [
       { "w_525": [] },
@@ -830,7 +834,7 @@
         {
           title: 'Create a circle',
           code: `{
-  "__comments__": [
+  "__INTRO__": [
 
     "///////////////////////////////////////////////////////////////",
 
@@ -844,9 +848,9 @@
     "///////////////////////////////////////////////////////////////"
   ],
 
-  "root_url": "https://res.cloudinary.com/demo/image/upload",
-  "base_image": "horses",
-  "format": "png",
+  "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
+  "BASE_IMAGE": "horses",
+  "FORMAT": "png",
   "sections": [
     [
       { "w_525": [] },
@@ -877,13 +881,13 @@
         {
           title: 'Create a triangle',
           code: `{
-  "__comments__": [
+  "__INTRO__": [
 
     "///////////////////////////////////////////////////////////////",
 
     "Making a triangle is complicated, but doable",
 
-    "The approach here is to make a square the cut it to a triangle",
+    "This approach makes a square and cuts it into a triangle",
     "with another square placed over it at a different angle",
 
     "The main image has to be repeated as an underlay with 'u_'",
@@ -894,6 +898,9 @@
     "properly easy, but I just did trial and error. If you know that",
     "math, please send it to me",
 
+    "There may be another approach that doesn't casuet the blur,",
+    "but that's left as an exercise for the reader",
+
     "Probably better off making your own images of triangles",
     "and placing them",
 
@@ -901,9 +908,9 @@
     "///////////////////////////////////////////////////////////////"
   ],
 
-  "root_url": "https://res.cloudinary.com/demo/image/upload",
-  "base_image": "horses",
-  "format": "png",
+  "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
+  "BASE_IMAGE": "horses",
+  "FORMAT": "png",
   "sections": [
     [
       { "w_525": [] },
@@ -956,7 +963,7 @@
         const assembly = []
         try {
           const data = JSON.parse(document.getElementById('source_block').value)
-          assembly.push(data.root_url)
+          assembly.push(data.ROOT_URL)
           data.sections.forEach((section) => {
             const parts = []
             section.forEach((item) => {
@@ -983,10 +990,10 @@
             assembly.push(parts.join(','))
           })
 
-          if (data.format !== '') {
-            assembly.push(`${data.base_image}.${data.format}`)
+          if (data.FORMAT !== '') {
+            assembly.push(`${data.BASE_IMAGE}.${data.FORMAT}`)
           } else {
-            assembly.push(data.base_image)
+            assembly.push(data.BASE_IMAGE)
           }
 
           const output_url = assembly.join('/')
@@ -1263,28 +1270,6 @@ https://cloudinary.com/documentation/image_transformations
 https://cloudinary.com/blog/a_one_color_image_is_worth_two_thousand_words
 rounded cornder with r_ radius (less than r_max which is a circle) - show that you can do individual corners
 look into variables - https://cloudinary.com/documentation/transformation_reference#_variable
-      </pre>
-
-      <h3>assets</h3>
-      <pre>
-face_top.jpg
-sample.jpg
-backpack.jpg
-couple.jpg
-https://res.cloudinary.com/demo/image/upload/ar_1:1,c_crop,g_auto:cat,w_1000/docs/one_cat_one_dog.jpg
-https://res.cloudinary.com/demo/image/upload/ar_1:1,c_fill,g_auto:subject/boat_lake2.jpg
-https://res.cloudinary.com/demo/image/upload/c_crop,g_microwave/docs/kitchen1.jpg
-https://res.cloudinary.com/demo/image/upload/c_crop,g_cld-decompose_tile/docs/tiled-birds.jpg
-https://res.cloudinary.com/demo/image/upload/$colors_5/fn_wasm:quantize.wasm/oldman_village_st.jpg
-https://res.cloudinary.com/demo/image/upload/l_fetch:aHR0cHM6Ly9yZXMuY2xvdWRpbmFyeS5jb20vZGVtby9pbWFnZS91cGxvYWQvbG9nb3MvY2xvdWRpbmFyeV9mdWxsX2xvZ29fYmx1ZV9zbWFsbC5wbmc=/fl_layer_apply,g_north_west,x_15,y_15/docs/model_handbag_640
-https://res.cloudinary.com/demo/image/upload/l_lut:iwltbap_aspen.3dl/fl_layer_apply/ladybug_top.jpg
-https://res.cloudinary.com/demo/image/upload/pg_embedded:7/cld_sample_smart_PSD.jpg
-https://res.cloudinary.com/demo/image/upload/c_thumb,g_face,h_150,w_150,z_0.75/woman_sample.jpg
-https://res.cloudinary.com/demo/image/upload/c_crop,g_sink,z_0.8/docs/kitchen1.jpg
-https://res.cloudinary.com/demo/image/upload/l_golden_star/c_scale,fl_region_relative,w_1.0/fl_layer_apply,g_faces/young_couple2.jpg
-https://res.cloudinary.com/demo/image/fetch/f_png/c_scale,w_800/l_text:Unkempt_250_bold:Water/fl_cutter,fl_layer_apply/https://upload.wikimedia.org/wikipedia/commons/c/cc/Water_drop_impact_on_a_water-surface_-_(1).jpg
-https://res.cloudinary.com/demo/w_auto:100:400/bike.jpg
-https://res.cloudinary.com/demo/image/upload/base.jpg
       </pre>
     </main>
     <footer>
