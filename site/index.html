@@ -95,6 +95,7 @@
         min-height: 100vh;
         display: grid;
         grid-template-rows: auto 1fr auto;
+        font-size: 1.1rem;
       }
 
       /**********************\
@@ -208,43 +209,43 @@
   "FORMAT": "jpg",
   "SECTIONS": [
     [
-      { "w_525": [] },
-      { "h_350": [] }
+      { "c_fill": [] },
+      { "w_1200": [] },
+      { "h_630": [] }
     ],
     [
-      {"l_text": ["Oswald_38_bold", "Cloudinary Image Maker" ] }
+      {"l_text": ["Oswald_70_bold", "Cloudinary Image Maker" ] }
     ],
     [
       { "fl_layer_apply": [] },
       { "g_north": [] },
-      { "y_17": [] }
+      { "y_24": [] }
     ],
     [
       {"c_fit": [] },
       {"co_white": [] },
-      {"w_525": [] },
-      {"h_20": [] },
+      {"w_1200": [] },
+      {"h_38": [] },
       {"bo_2px_solid_black": [] },
       {"b_rgb": ["FEB61F55"] },
-      {"l_text": ["Ubuntu_16_bold_stroke_alignmentvalue_center", "Configure text and transformations with JSON" ] }
+      {"l_text": ["Ubuntu_32_bold_stroke_alignmentvalue_center", "Configure text and transformations with JSON" ] }
     ],
     [
       { "fl_layer_apply": [] },
       { "g_north": [] },
-      { "y_58": [] }
+      { "y_108": [] }
     ],
     [
       {"c_fit": [] },
-      {"w_525": [] },
-      {"h_50": [] },
+      {"w_1200": [] },
       {"co_rgb": ["ccd1a5"] },
       {"bo_2px_solid_black": [] },
-      {"l_text": ["Ubuntu_18_bold_stroke_alignmentvalue_center", "cloudinary-image-maker.alanwsmith.com" ] }
+      {"l_text": ["Ubuntu_32_bold_stroke_alignmentvalue_center", "cloudinary-image-maker.alanwsmith.com" ] }
     ],
     [
       { "fl_layer_apply": [] },
       { "g_south": [] },
-      { "y_10": [] }
+      { "y_20": [] }
     ]
   ]
 }`,
@@ -272,17 +273,17 @@
   "FORMAT": "png",
   "SECTIONS": [
     [
-      { "w_525": [] },
-      { "h_350": [] }
+      { "w_1200": [] },
+      { "h_630": [] }
     ],
     [
-      { "l_text": ["Aldrich_19_bold", "Placed with g_north_west, x_10, y_10" ] }
+      { "l_text": ["Aldrich_40_bold", "Placed with g_north_west, x_20, y_20" ] }
     ],
     [
       { "fl_layer_apply": [] },
       { "g_north_west": [] },
-      { "x_10": [] },
-      { "y_10": [] }
+      { "x_20": [] },
+      { "y_20": [] }
     ]
   ]
 }`,
@@ -310,30 +311,30 @@
   "FORMAT": "png",
   "SECTIONS": [
     [
-      { "w_525": [] },
-      { "h_350": [] }
+      { "w_1200": [] },
+      { "h_630": [] }
     ],
     [
-      { "l_text": ["ABeeZee_19_bold", "At the top via g_north and y_10" ] }
+      { "l_text": ["ABeeZee_40_bold", "At the top via g_north and y_20" ] }
     ],
     [
       { "fl_layer_apply": [] },
       { "g_north": [] },
-      { "y_10": [] }
+      { "y_20": [] }
     ],
     [
-      { "l_text": ["Aguafina Script_19_bold", "In the middle (no g_whatever applied)" ] }
+      { "l_text": ["Aguafina Script_40_bold", "In the middle (no g_whatever applied)" ] }
     ],
     [
       { "fl_layer_apply": [] }
     ],
     [
-      { "l_text": ["Averia Sans Libre_19_bold", "At the bottom via g_south and y_10" ] }
+      { "l_text": ["Averia Sans Libre_40_bold", "At the bottom via g_south and y_20" ] }
     ],
     [
       { "fl_layer_apply": [] },
       { "g_south": [] },
-      { "y_10": [] }
+      { "y_20": [] }
     ]
   ]
 }`,
@@ -349,16 +350,18 @@
 
     "///////////////////////////////////////////////////////////////",
 
-    "Use 'co_rgb' to set the font color and 'bo_3px_solid_rgb' to",
-    "set a border of 3 pixels.",
+    "Use 'co_rgb' to set the font color and 'bo_10px_solid_rgb' to",
+    "set a border of 10 pixels.",
 
     "Note that the font name must have '_stroke' in it for the",
     "border to work properly",
 
-    "Setting the 'w_300' and 'c_fit' is necessary to prevent the",
+    "Setting the 'w_600' and 'c_fit' is necessary to prevent the",
     "border stroke line from being cut off at the start and end",
     "of the string. (You might need to do height ('h_') as well.",
 
+    "And, as you can see from the example, the borders sometimes",
+    "have artifacts and don't look that great",
 
     "///////////////////////////////////////////////////////////////"
   ],
@@ -368,15 +371,15 @@
   "FORMAT": "png",
   "SECTIONS": [
     [
-      { "w_525": [] },
-      { "h_350": [] }
+      { "w_1200": [] },
+      { "h_630": [] }
     ],
     [
       { "c_fit": [] },
-      { "w_300": [] },
-      { "co_rgb": ["274628"] },
+      { "w_600": [] },
+      { "co_rgb": ["777722"] },
       { "bo_10px_solid_rgb": ["732287"] },
-      { "l_text": ["Kurale_19_stroke_bold_center", "This has a color and a border"] }
+      { "l_text": ["Kurale_40_stroke_bold_center", "This has a color and a border"] }
     ],
     [
       { "fl_layer_apply": [] }
@@ -405,13 +408,13 @@
   "FORMAT": "png",
   "SECTIONS": [
     [
-      { "w_525": [] },
-      { "h_350": [] }
+      { "w_1200": [] },
+      { "h_630": [] }
     ],
     [
       { "c_fit": [] },
-      { "l_text": ["Arial_13_bold", "This example uses \\"c_fit\\" to automatically wrap text to the next line when it hits the edge of the bounding box defined by \\"w_300\\".\\n\\nNew lines are done with \`\\\\n\\\\n\` and double quotes are done with \`\\\\\\"\`" ] },
-      { "w_300": [] }
+      { "l_text": ["Arial_32_bold", "This example uses \\"c_fit\\" to automatically wrap text to the next line when it hits the edge of the bounding box defined by \\"w_600\\".\\n\\nNew lines are done with \`\\\\n\\\\n\` and double quotes are done with \`\\\\\\"\`" ] },
+      { "w_600": [] }
     ],
     [
       { "fl_layer_apply": [] }
@@ -437,18 +440,14 @@
 
           
   "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
-  "BASE_IMAGE": "face_left",
+  "BASE_IMAGE": "butterfly",
   "FORMAT": "png",
   "SECTIONS": [
-    [ 
-      { "w_525": [] },
-      { "h_350": [] }
-    ],
     [
-      { "c_crop": [] },
+      { "c_thumb": [] },
       { "g_face": [] },
-      { "w_350": [] },
-      { "h_350": [] }
+      { "w_332": [] },
+      { "h_332": [] }
     ],
     [
       { "r_max": [] }
@@ -1227,6 +1226,15 @@
       <hr />
       <h3>Notes</h3>
       <ul>
+        <li>
+          The examples that use &quot;c_fill&quot; cut off parts of the image to
+          keep the desired perspective without distorting the image. Check out
+          <a
+            href="https://cloudinary.com/documentation/transformation_reference#c_crop_resize"
+            >the docs</a
+          >
+          for alternatives.
+        </li>
         <li>
           Usage details are below, but I find it's easier to just click around
           the exmaples and look at the code to figure out how things work
