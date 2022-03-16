@@ -1191,10 +1191,10 @@
       <h1>Cloudinary Image Maker</h1>
       <p>
         Configuring cloudinary urls by hand is a pain. I made this to make it
-        easier. I mainly use it to design templates for generating open graph
-        (OG) images for the social network cards that show up when you share a
-        link. It's nothing fancy. You edit the json in the box below and a
-        preview of the images along with the url.
+        easier. I use it to design templates for open graph (OG) images for the
+        social network cards that show up when you share a link. It's nothing
+        fancy. You edit the json in the box below and a preview of the images
+        along with the url.
       </p>
 
       <p>Check out these examples to get you started</p>
@@ -1225,14 +1225,14 @@
       <h3>Notes</h3>
       <ul>
         <li>
+          Usage details are below, but I find it's easier to just click around
+          the exmaples and look at the code to figure out how things work
+        </li>
+        <li>
           The cloudinary reference docs with all the stuff you can do
           <a href="https://cloudinary.com/documentation/image_transformations"
             >are here</a
           >
-        </li>
-        <li>
-          I mainly built this to make it easier to figure out text placement for
-          open graph social images. It's super handy for that
         </li>
         <li>
           The preview image width is constrained. The generated urls are
@@ -1265,8 +1265,12 @@
       <h3>Usage</h3>
       <ul>
         <li>
-          Trailing commas don't work (formatters usually spread this across
-          multiple lines, but something like this `['a', 'b', 'c',]` will
+          You can use versions and folders in the BASE_IMAGE (e.g.
+          &quot;v1643773709/og-images/blank-v4&quot;)
+        </li>
+        <li>
+          Trailing commas in the json don't work (formatters usually spread this
+          across multiple lines, but something like this `['a', 'b', 'c',]` will
           choke). If you get an invalid json, that's the first thing to check
         </li>
         <li>Both object keys and values require double quotes</li>
@@ -1299,26 +1303,17 @@
 
       <h3>Possible Enhancements</h3>
       <ul>
-        <li>
-          make sure the process can deal with files that are in cloudinary
-          folders
-        </li>
         <li>Made this thing responsive</li>
-        <li>
-          Switch Open in new tab to a button so it matches with the copy button
-        </li>
         <li>
           move off of document.execCommand() to the newer navigation api for
           copying the url to the clipboard
         </li>
         <li>
-          When clicking the preview (or when auto preview is setup) make the
-          image disappear or have some type of overlay) to show that it's being
-          loaded
+          Have the image switch to some type of loading spinner when a new image
+          is being genearted
         </li>
         <li>Make a button that adds a new section stub</li>
         <li>Make a button that adds a new item to the last section</li>
-        <li>Add a button to auto copy the url</li>
         <li>
           Maybe handle newlines in strings to make it easier to see longer lines
           of text
@@ -1330,19 +1325,16 @@
         </li>
         <li>Wire up prettier or another json formatter</li>
         <li>Add syntax highlighting</li>
-        <li>Add more examples</li>
         <li>Maybe split out the json sections to individual text areas</li>
         <li>
           Reverse the process so you can drop in a url that gets parsed out to a
           json for editing
         </li>
         <li>Examples with artistic filters</li>
-        <li>Generate a page with font samples for available fonts?</li>
-        <li>Show a backup default image</li>
-        <li>look at the layout stuff for making pdfs</li>
-        <li>
-          https://cloudinary.com/documentation/transformation_reference#e_assist_colorblind
-        </li>
+        <li>Generate a page with font samples for available fonts</li>
+        <li>Show a backup default image example</li>
+        <li>Look at the layout stuff for making pdfs</li>
+        <li>Show a colorblind assist example</li>
         <li>
           look at conditionals and variables for possibility of generative art
         </li>
