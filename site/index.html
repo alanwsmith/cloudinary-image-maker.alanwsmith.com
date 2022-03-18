@@ -544,6 +544,46 @@
         ///////////////////////////////////////////////////////
 
         {
+          title: 'Overlay a color on an image',
+          code: `{
+  "__INTRO__": [
+
+    "///////////////////////////////////////////////////////////////",
+
+    "This uses a 1 pixel white image, applies a color ",
+    "to it and then dials down the opacity to create a",
+    "color wash over the entire image",
+
+    "///////////////////////////////////////////////////////////////"
+  ],
+
+  "ROOT_URL": "https://res.cloudinary.com/demo/image/upload",
+  "BASE_IMAGE": "horses",
+  "FORMAT": "png",
+  "SECTIONS": [
+    [
+      { "c_fill": [] },
+      { "w_1200": [] },
+      { "h_630": [] }
+    ],
+    [
+      { "l_1px-white": [] },
+      { "w_1200": [] },
+      { "h_630": [] },
+      { "e_colorize": [] },
+      { "co_rgb": ["d11b30"] },
+      { "o_60": [] }
+    ],
+    [
+      { "fl_layer_apply": [] }
+    ]
+  ]
+}`,
+        },
+
+        ///////////////////////////////////////////////////////
+
+        {
           title: 'Get a Gravatar image',
           code: `{
   "__INTRO__": [
