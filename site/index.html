@@ -1247,10 +1247,15 @@
       <h1>Cloudinary Image Maker</h1>
       <p>
         Configuring cloudinary urls by hand is a tedious. I made this to make it
-        easier. I use it to design templates for open graph (OG) images for the
-        social network cards that show up when you share a link. It's nothing
-        fancy. You edit the json in the box below and a preview of the images
-        along with the url.
+        easier. (It's json so it's still kinda tedious, but I find it easier
+        than trying to mess with URLs. Especially when there are long text
+        strings and escaping involved)
+      </p>
+      <p>
+        I use it to design templates for open graph (OG) images for the social
+        network cards that show up when you share a link. It's nothing fancy.
+        You edit the json in the box below and a preview of the images along
+        with the url.
       </p>
 
       <p>Check out these examples to get you started</p>
@@ -1261,18 +1266,22 @@
       <h3 id="examples_section"></h3>
 
       <hr />
-      <div>
-        <button id="copy_button">Copy URL</button>
-        <input type="text" id="output_url" size="70" readonly="readonly" />
-      </div>
-      <hr />
-      <br />
 
       <div id="image_box">
         <a id="new_tab_url" target="_blank">
           <img id="image_preview" />
         </a>
       </div>
+
+      <hr />
+
+      <div>
+        <button id="copy_button">Copy URL</button>
+        <input type="text" id="output_url" size="70" readonly="readonly" />
+      </div>
+
+      <hr />
+
       <div>
         Configure your transformation here:
         <textarea id="source_block" cols="10" rows="23"></textarea>
@@ -1326,6 +1335,19 @@
             >google fonts you can use in cloudinary transformations</a
           >
         </li>
+        <li>
+          Use `:` as the seperator if you need to use an image from that's in a
+          folder on in the cloudinary media libray. For example, `{
+          "l_og-images:1x1-white": [] }`
+        </li>
+        <li>
+          There is a `letter_spacing` option but as far as I can tell it only
+          increases spacing and can't contract it.
+        </li>
+        <li>
+          You can pass font weights to the text calls (e.g. `Source Sans
+          Pro_80_900`)
+        </li>
       </ul>
 
       <h3>Usage</h3>
@@ -1369,6 +1391,16 @@
 
       <h3>Possible Enhancements</h3>
       <ul>
+        <li>
+          Setup so the tab key adds tabs in the box instead of tabbing to the
+          next window
+        </li>
+        <li>
+          Setup so that if there's an invalid json or the image isn't there the
+          area doesn't collapse and shift the textarea around
+        </li>
+        <li>Add vim controls</li>
+
         <li>Made this thing responsive</li>
         <li>
           move off of document.execCommand() to the newer navigation api for
